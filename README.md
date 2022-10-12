@@ -1,6 +1,6 @@
 # Notes_for_linux
 ```diff
-
+# users
 @@ create eexpir date for user jane @@
 + sudo usermod --expiredate  March 1, 2030   jane 
 
