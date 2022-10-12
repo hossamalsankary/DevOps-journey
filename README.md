@@ -1,8 +1,8 @@
 # Notes_for_linux
-#create eexpir date for user jane
+# create eexpir date for user jane
 sudo usermod --expiredate  March 1, 2030   jane 
 
-#Create a system account called apachedev
+<span style="color: green"> Some green text </span>Create a system account called apachedev
 udo useradd --system apachedev
 
 #Jane's account i.e jane is expired.Unexpire the same and make sure it never expires again.
