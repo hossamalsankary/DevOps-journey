@@ -84,7 +84,7 @@
 ```
 - #####  Change File Permissions
 <p align="left">
- <img src="/images/Files-permissions.png" alt="Permissions" width="80%" height="50%" />
+ <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
  
 ```diff
