@@ -29,14 +29,17 @@
 + ls -alSh
 
 ```
-- ##### Working With  Directories Move Around In The System
+- #####  Move Around In The System
 
 ```diff
 # The root directory in linux is  /  let's move to  root 
 + cd /
 
-# Now list all 
+# show 
 + ls -al
+
+# print name of curren
++ pwd
 
 # Now move to home
 + cd /home
@@ -44,6 +47,35 @@
 # Then go back again to root
 + cd ..
 
-# Show current directory
-+ pwd
+```
+- #####  Creating Files and Directories
+
+```diff
+# Create directory  name moon 
++ mkdir moon
+
+# Creating Files
++ touch note.txt
+
+```
+- #####  Copy and move files
+
+```diff
+# Copy File to home 
++ cp note.txt ~/
+
+# copy the moon directory to home
++ cp -R moon ~/
+
+# notice f to want to copy folder you have to used -R 
+#  -R, -r, --recursive          copy directories recursively
+
+
+# Move Files and Directory 
+# Copy File to home 
++ mv note.txt ~/
+
+# copy the moon directory to home
++ mv -R moon ~/
+
 ```
