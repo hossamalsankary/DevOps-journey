@@ -157,3 +157,79 @@
 <p align="left">
  <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
 </p>
+
+```diff
+# Search for Files
+! find [/path/to/directory] [search_parameters] 
+# lookup for exact name
+! find [/path/to/directory] -name [name] 
+
++ find /bin/ -name 'ssh'
+
+# looking for  and file contain "ss" in the first of the file name
++ find /bin/ -name '*ss'
+
+# looking for  and file contain "ss" in the last of the file name
++ find /bin/ -name 'ss*'
+
+# looking for file or directory with Modification time 
+! find [/path/to/directory] -mmin [minute] 
+
+# we need to do some set-up to test modification run this code
++ mkdir modification && touch modification/test modification/tus modification/ret && echo 'hello' > modification/test 
+
+# now let's have fun
++ find modification/ -mmin 1  #get all files that last modified in Exactly  1 minute
++ find modification/ -mmin -1  #get all files that last modified between now and last 1 minute
++ find modification/ -mmin +1  #get all files that last modified before   1 minute
+
+! notice 
+! Modification = Create or Edit
+! Modified Time != Change Time
+
++  find modification/ -mtime 2
+
+# Change Time
++  find modification/ -cmin 2 
+
+
+# Search ParametersModified Time
+
+# Search Parameters – File Size
+! find -size [size]
+
+! c bytes
+! k kilobytes
+! M megabytes
+! G gigabytes
+
+# Exactly 512 kb
++ find -size 512k 
+
+# Greater than 512 kb
++ find -size +512k 
+
++ find -size -512k # Less than 512 kb
+# Search for file name != test
++ find  modification/ -type f -not -name "test" 
+
+
+! Permissions: 664 = u+rw,g+rw,o+r
+# find files with exactly 664 permissions
++ find /usr/bin/ -perm 664
+
+# find files with at least 664 permissions
++ find /usr/bin/ -perm -664
+
+# find files with any of these permissions
++ find /usr/bin/ -perm /664
+
+# find files with exactly 664 permissions
++ find /usr/bin/ -perm u=rw,g=rw,o=r
+
+# find files with at least 664 permissions
++ find /usr/bin/ -perm –u=rw,g=rw,o=r
+
+# find files with any of these permissions
++ find /usr/bin/ -perm /u=rw,g=rw,o=r
+```
