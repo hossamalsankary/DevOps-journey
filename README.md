@@ -4,4 +4,5 @@
 
 ## Knowing Linux Basics
 
-- [✔️] 🐧 1  > [Linux Commands for DevOps (Actually everyone)](linux/LinuxCommands.md)
+- [✔️] 🐧 1  > [Linux essential commands
+ for DevOps (Actually everyone)](linux/LinuxCommands.md)
