@@ -138,7 +138,7 @@
 + chmod +x denied 
 
 ```
-# Octal Permissions
+## Octal Permissions
 <p align="left">
  <img src="/images/Octal Permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
