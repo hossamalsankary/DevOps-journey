@@ -97,11 +97,13 @@
 
 # now let's try to get into this file 
 + cd denied
-
 # it will show this  Permission denied 
+```
 <p align="left">
  <img src="/images/perm1.png" alt="Permissions" width="80%" height="50%" />
 </p>
+
+```diff
 # now let's understand what just happen
 
 ! r > read
@@ -116,10 +118,13 @@
 + chmod u+x denied/
 
 # now you can  get in to directory
+```
+
 <p align="left">
  <img src="/images/perm2.png" alt="Permissions" width="80%" height="50%" />
 </p>
 
+```diff
 ! useing = mean that you wnat give this permission only for user and group and other
 + chmod u+rw,g-r,o=r denied 
 
@@ -132,8 +137,12 @@
 ! adding +r means that you want to add execute prem for all
 + chmod +x denied 
 
+```
 # Octal Permissions
 <p align="left">
  <img src="/images/Octal Permissions.png" alt="Permissions" width="80%" height="50%" />
 </p>
+
+```diff
+! r = 
 ```
