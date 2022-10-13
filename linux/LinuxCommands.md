@@ -62,6 +62,7 @@
 
 ```diff
 # Copy File to home 
+! cp [source] [dest] 
 + cp note.txt ~/
 
 # copy the moon directory to home
@@ -72,10 +73,11 @@
 
 
 # Move Files and Directory 
-# Copy File to home 
+! mv [source] [dest] 
+
 + mv note.txt ~/
 
-# copy the moon directory to home
+# mave the moon directory to home
 + mv -R moon ~/
 
 ```
