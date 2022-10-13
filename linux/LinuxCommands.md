@@ -140,9 +140,17 @@
 ```
 # Octal Permissions
 <p align="left">
- <img src="/images/Octal Permissions.png" alt="Permissions" width="80%" height="50%" />
+ <img src="/images/Octal Permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
 
 ```diff
-! r = 
+! r = 4
+! w = 2
+! x = 1
+
+# so we can used Octal Permissions
++ chmod u+rw,g-r,o=r denied  =>>  chmod 641 denied
++ chmod u+x denied  ==> chmod 100 denied
+
+
 ```
