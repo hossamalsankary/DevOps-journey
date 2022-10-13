@@ -158,8 +158,8 @@
  <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
 </p>
 
+## Search for Files
 ```diff
-# Search for Files
 ! find [/path/to/directory] [search_parameters] 
 # lookup for exact name
 ! find [/path/to/directory] -name [name] 
