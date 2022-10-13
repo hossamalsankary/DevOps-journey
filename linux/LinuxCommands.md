@@ -121,7 +121,7 @@
 ```
 
 <p align="left">
- <img src="/images/perm2.png" alt="Permissions" width="80%" height="50%" />
+ <img src="/images/perm2.png" alt="Permissions" width="50%" height="38%" />
 </p>
 
 ```diff
@@ -154,3 +154,6 @@
 
 
 ```
+<p align="left">
+ <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
+</p>
