@@ -83,7 +83,7 @@
 
 ```
 - #####  Change File Permissions
-<p align="center">
+<p align="left">
  <img src="/images/premissions.jpg" alt="Permissions" width="100%" height="50%" />
 </p>
 
