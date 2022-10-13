@@ -84,10 +84,29 @@
 ```
 - #####  Change File Permissions
 <p align="left">
- <img src="/images/Files-permissions.png" alt="Permissions" width="100%" height="50%" />
+ <img src="/images/Files-permissions.png" alt="Permissions" width="80%" height="50%" />
 </p>
-
+ 
 ```diff
+# Let's understand what is prmissions in linux
+# if you try to get into file or read file and you don't have permission to do that 
+# you will face this problem Permission denied
+! try this with me 
+# mkdir with permission red only
++ mkdir denied && chmod u=r , g=r , o=r denied
+
+# now let's try to get into this file 
++ cd denied
+
+# it will show this  Permission denied 
+# now let's understand what just happen
+
+@@
+ r > read
+ w > write
+ x > execute
+@@
+
 ! chmod [OPTION] [MODE]  [FILE]
 # changemode chmod permissions file directory
 + cp note.txt ~/
