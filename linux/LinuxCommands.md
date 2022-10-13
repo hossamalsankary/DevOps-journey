@@ -101,29 +101,17 @@
 # it will show this  Permission denied 
 # now let's understand what just happen
 
-@@
- r > read
- w > write
- x > execute
-@@
+! r > read
+! w > write
+! x > execute
+! u > user permission
+! g > group permission
+! o > other permission
 
 ! chmod [OPTION] [MODE]  [FILE]
-# changemode chmod permissions file directory
-+ cp note.txt ~/
+# give permission execute to   denied  directory excute  permission
++ chmod u+x denied/
 
-# copy the moon directory to home
-+ cp -R moon ~/
-
-# notice f to want to copy folder you have to used -R 
-#  -R, -r, --recursive          copy directories recursively
-
-
-! mv [source] [dest] 
-# Move Files and Directory 
-
-+ mv note.txt ~/
-
-# Move the moon directory to home
-+ mv -R moon ~/
+# now you can  get in to directory
 
 ```
