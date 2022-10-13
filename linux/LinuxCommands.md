@@ -84,8 +84,9 @@
 ```
 - #####  Change File Permissions
 <p align="center">
- <img src="images/premissions.jpg?raw=true" alt="Permissions" width="50%" height="50%" />
+ <img src="https://github.com/hossamalsankary/DevOps-journey/blob/main/images/premissions.jpg" alt="Permissions" width="50%" height="50%" />
 </p>
+
 ```diff
 ! cp [source] [dest] 
 # Copy File to home 
