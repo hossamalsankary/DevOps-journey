@@ -84,7 +84,7 @@
 ```
 - #####  Change File Permissions
 <p align="center">
- <img src="https://github.com/hossamalsankary/DevOps-journey/blob/main/images/premissions.jpg" alt="Permissions" width="50%" height="50%" />
+ <img src="/images/premissions.jpg" alt="Permissions" width="100%" height="50%" />
 </p>
 
 ```diff
