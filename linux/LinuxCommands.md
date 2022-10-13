@@ -84,12 +84,12 @@
 ```
 - #####  Change File Permissions
 <p align="left">
- <img src="/images/premissions.jpg" alt="Permissions" width="100%" height="50%" />
+ <img src="/images/Files-permissions.png" alt="Permissions" width="100%" height="50%" />
 </p>
 
 ```diff
-! cp [source] [dest] 
-# Copy File to home 
+! chmod [OPTION] [MODE]  [FILE]
+# changemode chmod permissions file directory
 + cp note.txt ~/
 
 # copy the moon directory to home
