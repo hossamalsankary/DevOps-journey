@@ -61,8 +61,34 @@
 - #####  Copy and move files
 
 ```diff
-# Copy File to home 
 ! cp [source] [dest] 
+# Copy File to home 
++ cp note.txt ~/
+
+# copy the moon directory to home
++ cp -R moon ~/
+
+# notice f to want to copy folder you have to used -R 
+#  -R, -r, --recursive          copy directories recursively
+
+# -------------------------------------------------------------
+
+! mv [source] [dest] 
+# Move Files and Directory 
+
++ mv note.txt ~/
+
+# Move the moon directory to home
++ mv -R moon ~/
+
+```
+- #####  Change File Permissions
+<p align="center">
+ <img src="images/premissions.jpg?raw=true" alt="Permissions" width="50%" height="50%" />
+</p>
+```diff
+! cp [source] [dest] 
+# Copy File to home 
 + cp note.txt ~/
 
 # copy the moon directory to home
@@ -72,12 +98,12 @@
 #  -R, -r, --recursive          copy directories recursively
 
 
-# Move Files and Directory 
 ! mv [source] [dest] 
+# Move Files and Directory 
 
 + mv note.txt ~/
 
-# mave the moon directory to home
+# Move the moon directory to home
 + mv -R moon ~/
 
 ```
