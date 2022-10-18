@@ -1,5 +1,10 @@
 1. [Essential Commands](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#Essential--Commands)
-2. [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
+2. [Search For Files ](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files)
+3. [Search for txt inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies)
+4. [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
+
+
+### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Essential Commands
 
@@ -86,7 +91,7 @@
 
 ```
 
-##### --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Search for Files
 ```diff
 ! find [/path/to/directory] [search_parameters] 
@@ -162,27 +167,26 @@
 # find files with any of these permissions
 + find /usr/bin/ -perm /u=rw,g=rw,o=r
 ```
-##### --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Search for txt inside flies
  - ###### Searching With Grep
  ```diff 
-! grep [options] ‘search_pattern’ file
+ ! grep [options] ‘search_pattern’ file
 
-# if you are using CentOS Linux  try this
-+ grep 'CentOS' /etc/os-release
+ # if you are using CentOS Linux  try this
+ + grep 'CentOS' /etc/os-release
+ 
+ # with --ignore-case or -i  now  ignore case distinctions
+  + grep --ignore-case 'CentOS' /etc/os-release
 
-# with --ignore-case or -i  now  ignore case distinctions
-+ grep --ignore-case 'CentOS' /etc/os-release
+ # with  --recursive  or -r  search in all files inside directories
+  + grep --recursive   'CentOS' /etc/
 
-# with  --recursive  or -r  search in all files inside directories
-+ grep --recursive   'CentOS' /etc/
+ # with --invert-match  or -v       select non-matching lines
+  + grep --invert-match  'CentOS' /etc/os-release
 
-# with --invert-match  or -v       select non-matching lines
-+ grep --invert-match  'CentOS' /etc/os-release
-
-# with -w, --word-regexp         force PATTERN to match only whole words
-#=grep --word-regexp  'CentOS' /etc/os-release
+ # with -w, --word-regexp         force PATTERN to match only whole words
+ grep --word-regexp  'CentOS' /etc/os-release
 
  ```
  - ###### Analyze Text With Regular Expressions
@@ -227,7 +231,7 @@
 
   ```
 
-##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Change File Permissions
 <p align="left">
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
