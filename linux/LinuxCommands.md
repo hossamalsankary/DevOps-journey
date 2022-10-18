@@ -164,7 +164,46 @@
 ```
 
 # Search for txt inside flies
+ - ###### Searching With Grep
+ ```diff 
+ ! grep [options] ‘search_pattern’ file
 
+ # if you are using CentOS Linux  try this
+ + grep 'CentOS' /etc/os-release
+ 
+ # with --ignore-case or -i  now  ignore case distinctions
+  + grep --ignore-case 'CentOS' /etc/os-release
+
+ # with  --recursive  or -r  search in all files inside directories
+  + grep --recursive   'CentOS' /etc/
+
+ # with --invert-match  or -v       select non-matching lines
+  + grep --invert-match  'CentOS' /etc/os-release
+
+ # with -w, --word-regexp         force PATTERN to match only whole words
+ grep --word-regexp  'CentOS' /etc/os-release
+
+ ```
+ - ###### Analyze Text With Regular Expressions
+
+ ```diff
+# ^ “The line begins with”
++ grep -i '^CentOS' /etc/os-release
+
+# $ “The line ends with”
++ grep  -e '"' /etc/os-release
+
+# . “Match any ONE character”
++ grep   'ce.t' /etc/os-release
+
+# result going to be like this centos >> with . any character could be 
++ grep  -wr 's.h' /etc/
+
+# *: Match The Previous Element 0 Or More Times in this example we tell grep if you found last character its grep it if not grep the word match with "le"
++ grep -r 'let*' /etc/
+
+
+  ```
 
 #### ----------------------------------------prmissions--------------------------------------
 # Change File Permissions
