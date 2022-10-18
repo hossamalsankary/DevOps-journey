@@ -90,78 +90,8 @@
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
  
-```diff
-# Let's understand what is prmissions in linux
-# if you try to get into file or read file and you don't have permission to do that 
-# you will face this problem Permission denied
-! try this with me 
-# mkdir with permission red only
-+ mkdir denied && chmod u=r , g=r , o=r denied
 
-# now let's try to get into this file 
-+ cd denied
-# it will show this  Permission denied 
-```
-<p align="left">
- <img src="/images/perm1.png" alt="Permissions" width="80%" height="50%" />
-</p>
-
-```diff
-# now let's understand what just happen
-
-! r > read
-! w > write
-! x > execute
-! u > user permission
-! g > group permission
-! o > other permission
-
-! chmod [OPTION] [MODE]  [FILE]
-# give permission execute to   denied  directory excute  permission
-+ chmod u+x denied/
-
-# now you can  get in to directory
-```
-
-<p align="left">
- <img src="/images/perm2.png" alt="Permissions" width="50%" height="38%" />
-</p>
-
-```diff
-! useing = mean that you wnat give this permission only for user and group and other
-+ chmod u+rw,g-r,o=r denied 
-
-! useing - mean that you wnat remove this permission  from user and group and other
-+ chmod u-r,g-r,o-r denied 
-
-! useing + mean that you wnat add this permission  for user and group and other
-+ chmod u+r,g+r,o+r denied 
-
-! adding +r means that you want to add execute prem for all
-+ chmod +x denied 
-
-```
-## Octal Permissions
-<p align="left">
- <img src="/images/Octal Permissions.png" alt="Permissions" width="50%" height="40%" />
-</p>
-
-```diff
-! r = 4
-! w = 2
-! x = 1
-
-# so we can used Octal Permissions
-+ chmod u+rw,g-r,o=r denied  =>>  chmod 641 denied
-+ chmod u+x denied  ==> chmod 100 denied
-
-
-```
-<p align="left">
- <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
-</p>
-
-## Search for Files
+# Search for Files
 ```diff
 ! find [/path/to/directory] [search_parameters] 
 # lookup for exact name
@@ -236,3 +166,77 @@
 # find files with any of these permissions
 + find /usr/bin/ -perm /u=rw,g=rw,o=r
 ```
+
+
+####  ----------------------------------------prmissions------------------------------------------------------------
+```diff
+# Let's understand what is prmissions in linux
+# if you try to get into file or read file and you don't have permission to do that 
+# you will face this problem Permission denied
+! try this with me 
+# mkdir with permission red only
++ mkdir denied && chmod u=r , g=r , o=r denied
+
+# now let's try to get into this file 
++ cd denied
+# it will show this  Permission denied 
+```
+<p align="left">
+ <img src="/images/perm1.png" alt="Permissions" width="80%" height="50%" />
+</p>
+
+```diff
+# now let's understand what just happen
+
+! r > read
+! w > write
+! x > execute
+! u > user permission
+! g > group permission
+! o > other permission
+
+! chmod [OPTION] [MODE]  [FILE]
+# give permission execute to   denied  directory excute  permission
++ chmod u+x denied/
+
+# now you can  get in to directory
+```
+
+<p align="left">
+ <img src="/images/perm2.png" alt="Permissions" width="50%" height="38%" />
+</p>
+
+```diff
+! useing = mean that you wnat give this permission only for user and group and other
++ chmod u+rw,g-r,o=r denied 
+
+! useing - mean that you wnat remove this permission  from user and group and other
++ chmod u-r,g-r,o-r denied 
+
+! useing + mean that you wnat add this permission  for user and group and other
++ chmod u+r,g+r,o+r denied 
+
+! adding +r means that you want to add execute prem for all
++ chmod +x denied 
+
+```
+## Octal Permissions
+<p align="left">
+ <img src="/images/Octal Permissions.png" alt="Permissions" width="50%" height="40%" />
+</p>
+
+```diff
+! r = 4
+! w = 2
+! x = 1
+
+# so we can used Octal Permissions
++ chmod u+rw,g-r,o=r denied  =>>  chmod 641 denied
++ chmod u+x denied  ==> chmod 100 denied
+
+
+```
+<p align="left">
+ <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
+</p>
+
