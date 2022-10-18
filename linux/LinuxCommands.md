@@ -92,7 +92,7 @@
 ```
 
 ### -------------------------------------------------------------------------------------------------------------------------------------
-# Search for Files
+### Search for Files
 ```diff
 ! find [/path/to/directory] [search_parameters] 
 # lookup for exact name
@@ -168,7 +168,7 @@
 + find /usr/bin/ -perm /u=rw,g=rw,o=r
 ```
 ### -------------------------------------------------------------------------------------------------------------------------------------
-# Search for txt inside flies
+### Search for txt inside flies
  - ###### Searching With Grep
  ```diff 
  ! grep [options] ‘search_pattern’ file
@@ -232,7 +232,7 @@
   ```
 
 #### -------------------------------------------------------------------------------------------------------------------------------------
-# Change File Permissions
+### Change File Permissions
 <p align="left">
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
@@ -288,7 +288,7 @@
 + chmod +x denied 
 
 ```
-## Octal Permissions
+##### Octal Permissions
 <p align="left">
  <img src="/images/Octal Permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
