@@ -86,8 +86,7 @@
 
 ```
 
- 
-
+##### -------------------------------------------------------------------------------
 # Search for Files
 ```diff
 ! find [/path/to/directory] [search_parameters] 
@@ -164,8 +163,10 @@
 + find /usr/bin/ -perm /u=rw,g=rw,o=r
 ```
 
+# Search for txt inside flies
 
-####  ----------------------------------------prmissions--------------------------------------
+
+#### ----------------------------------------prmissions--------------------------------------
 # Change File Permissions
 <p align="left">
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
