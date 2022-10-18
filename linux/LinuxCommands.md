@@ -85,10 +85,7 @@
 + mv -R moon ~/
 
 ```
-# Change File Permissions
-<p align="left">
- <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
-</p>
+
  
 
 # Search for Files
@@ -168,7 +165,12 @@
 ```
 
 
-####  ----------------------------------------prmissions------------------------------------------------------------
+####  ----------------------------------------prmissions--------------------------------------
+# Change File Permissions
+<p align="left">
+ <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
+</p>
+
 ```diff
 # Let's understand what is prmissions in linux
 # if you try to get into file or read file and you don't have permission to do that 
