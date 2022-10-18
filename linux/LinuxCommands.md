@@ -202,6 +202,27 @@
 # *: Match The Previous Element 0 Or More Times in this example we tell grep if you found last character its grep it if not grep the word match with "le"
 + grep -r 'let*' /etc/
 
+#'egrep' means 'grep -E'.
+# {}: Previous Element Can Exist “this many” Times
+! 0{min,max}
+ 
++ egrep -r '0{3,}' /etc/
+! or
++ grep -Er '0{3,}' /etc/
+
+# ?: Make The Previous Element Optional
++ egrep -r 'centos?' /etc/
+
+# {}: Previous Element Can Exist “this many” Times
++ egrep -r '0{3,5}' /etc/ 
+
+# |: Match One Thing Or The Other
++ egrep -ir 'enabled?|disabled?' /etc/
+
+# []: Ranges Or Sets
++ egrep -r 'c[au]t' /etc/
++ egrep -r '/dev/.*' /etc/
++ egrep -r '/dev/[a-z]*[0-9]' /etc/
 
   ```
 
