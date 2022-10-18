@@ -1,4 +1,4 @@
-1. [Essential Commands](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#Essential--Commands)
+1. [Read and Use System Documentation]([https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#Essential--Commands](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#read-and-use-system-documentation))
 2. [Search For Files ](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files)
 3. [Search for txt inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies)
 4. [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
@@ -6,7 +6,7 @@
 
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
-# Essential Commands
+### Read and Use System Documentation
 
 - ##### Read and Use System Documentation
 ```diff
