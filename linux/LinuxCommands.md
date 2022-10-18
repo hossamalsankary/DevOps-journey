@@ -166,22 +166,22 @@
 # Search for txt inside flies
  - ###### Searching With Grep
  ```diff 
- ! grep [options] ‘search_pattern’ file
+! grep [options] ‘search_pattern’ file
 
- # if you are using CentOS Linux  try this
- + grep 'CentOS' /etc/os-release
- 
- # with --ignore-case or -i  now  ignore case distinctions
-  + grep --ignore-case 'CentOS' /etc/os-release
+# if you are using CentOS Linux  try this
++ grep 'CentOS' /etc/os-release
 
- # with  --recursive  or -r  search in all files inside directories
-  + grep --recursive   'CentOS' /etc/
+# with --ignore-case or -i  now  ignore case distinctions
++ grep --ignore-case 'CentOS' /etc/os-release
 
- # with --invert-match  or -v       select non-matching lines
-  + grep --invert-match  'CentOS' /etc/os-release
+# with  --recursive  or -r  search in all files inside directories
++ grep --recursive   'CentOS' /etc/
 
- # with -w, --word-regexp         force PATTERN to match only whole words
- grep --word-regexp  'CentOS' /etc/os-release
+# with --invert-match  or -v       select non-matching lines
++ grep --invert-match  'CentOS' /etc/os-release
+
+# with -w, --word-regexp         force PATTERN to match only whole words
+#=grep --word-regexp  'CentOS' /etc/os-release
 
  ```
  - ###### Analyze Text With Regular Expressions
