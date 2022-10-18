@@ -1,3 +1,6 @@
+1. [Essential Commands](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#Essential--Commands)
+2. [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
+
 # Essential Commands
 
 - ##### Read and Use System Documentation
@@ -48,7 +51,7 @@
 + cd ..
 
 ```
-- #####  Creating Files and Directories
+- ##### Creating Files and Directories
 
 ```diff
 # Create directory  name moon 
@@ -82,7 +85,7 @@
 + mv -R moon ~/
 
 ```
-- #####  Change File Permissions
+# Change File Permissions
 <p align="left">
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
 </p>
