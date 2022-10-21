@@ -178,3 +178,15 @@ spec:
 <p align="left">
  <img src="/images/repsetDEL.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
+### commands 
+
+```diff 
+# create replicaset
++ kubectl create –f rreplica_set.yml 
+
+> kubectl get replicaset
+> kubectl delete replicaset myapp-replicaset
+*Also deletes all underlying PODs
+> kubectl replace -f replicaset-definition.yml
+> kubectl scale –replicas=6 -f replicaset-definition.yml
+```
