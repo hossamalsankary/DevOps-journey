@@ -66,3 +66,26 @@ cluster. You will have a new node added to the cluster.
 <p align="left">
  <img src="/images/pod1.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
+
+### Create Pod With YUML file
+```diff 
+@@@
+#For now since we are working on
+#PODs, we will set the apiVersion as v1. Few other possible values for this field are
+#apps/v1beta1, extensions/v1beta1 etc
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: myapp-pod # the pod name
+  labels: # this can be any thing we used labels to define the pods
+          # labe help us to control all pods have the same name
+    app: myapp  
+    type: front-end
+spec: 
+  containers: # define the container name and the image
+    - name: nginx-container
+      image: nginx
+
+# this the same like (kubectl run nginx –-image nginx)
+@@@
+```
