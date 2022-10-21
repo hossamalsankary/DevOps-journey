@@ -95,7 +95,7 @@ spec:
 ! pod/myapp-pod created
 ```
 
-### Replica
+### Replica set
 ###### So what is a replica and why do we need a replication controller?
  we had a single POD running our application. What if for some
 reason, our application crashes and the POD fails? Users will no longer be able to
@@ -113,4 +113,64 @@ automatically bringing up a new POD when the existing one fails.
 
 <p align="left">
  <img src="/images/replica.jpg" alt="Permissions" width="100%%" height="100%%" />
+</p>
+
+### Define Replica set
+
+```diff
+apiVersion: apps/v1 #The apiVersion though is a bit different. It is apps/v1 which is different from
+                    #what we had before for replication controller
+kind: ReplicaSet
+metadata:
+  name: replicationcontroller
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template: # there we provide the pod template to tell replicaset 
+            # used this temple in case any pod goes down
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end # notice we will give tis label to selector to identify  
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+  replicas: 3 
+  selector:
+   matchLabels:
+       type: front-end  # by givin this selector label. we tell replicasets if you fond and 
+                        # pods have this label join it to our replicasets
+
+
+```
+```diff 
+# now run this template 
++ kubectl create -f replica_set.yml 
+
+# result should be like that
+! replicaset.apps/replicationcontroller created
+
+# let's inspect how many pods we have
++ kubectl get pods
+```
+<p align="left">
+ <img src="/images/replacasete.png" alt="Permissions" width="100%%" height="100%%" />
+</p>
+
+```diff 
+# result replicationcontroller-425wj       1/1     Running   0          27m
+# we have 3 pods  and if you try to delete any pod replicaset going to create 
+# new one for you and thats what High Availability mean 
+
++ kubectl delete pod replicationcontroller-425wj 
+
+#result
+! replicationcontroller-bt824       0/1     ContainerCreating   0          3s
+```
+<p align="left">
+ <img src="/images/repsetDEL.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
