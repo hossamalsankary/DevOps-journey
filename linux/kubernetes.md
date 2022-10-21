@@ -19,15 +19,19 @@
  <img src="/images/kubernetes-architecture.png" alt="Permissions" width="80%" height="50%" />
 </p>
 
-##### When you install Kubernetes on a system, you're actually installing the following components. An API 
+##### When you install Kubernetes on a system, you're actually installing the following components. In the master
 -  API server: acts as the front end for Kubernetes. The users, management devices,command line interfaces, all talk
 -  etcd service: it's the database key value store used by Kubernetes to store all data used to manage the cluster. etcd stores all that information bout all the worker 
 -  Schedulers: The Scheduler is responsible for distributing work or containers It looks for newly created containers and assigns them to nodes. 
 -  Controllers: They are responsible for noticing and responding when nodes, containers or end points goes down The controllers make decisions to bring up new containers 
 - Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
--  kubelet service: finally Kubelet is the agent that runs on each node in the cluster.
+-  kubelet API service: finally Kubelet is the agent that runs on each node in the cluster.
 
   
+#####  following components will install in every nodes or worker
+- kubelet agent: this that is responsible for interacting with kubelet API server in the   master to provide   health information of the worker node and carry out actions requested by the Master on the
+- Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
+- and other components we talk about it later
 
 ### PODs Again!
 Here we see the simplest of simplest cases were you have a single node kubernetes
