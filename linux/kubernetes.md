@@ -56,5 +56,13 @@ cluster. You will have a new node added to the cluster.
 
 # list all pods 
 + kubectl get pods
+# result
+! nginx                             1/1     Running   0          85s
+
+# now delete this pod
++ kubectl delete pod nginx
 
 ```
+<p align="left">
+ <img src="/images/pod1.png" alt="Permissions" width="100%%" height="100%%" />
+</p>
