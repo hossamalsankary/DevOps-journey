@@ -94,7 +94,7 @@ spec:
 # resale
 ! pod/myapp-pod created
 ```
-### - you can find this template here [link](templatets/pod_wth_yuml.yml)
+### - you can find this template here [link](template/pod_wth_yuml.yml)
 
 
 ### Replica set
@@ -149,9 +149,10 @@ spec:
 
 
 ```
-### - you can find this template here [link](templatets/replica_set.yml)
+### - you can find this template here [link](template/replica_set.yml)
 ```diff 
 # now run this template 
+
 + kubectl create -f replica_set.yml 
 
 # result should be like that
