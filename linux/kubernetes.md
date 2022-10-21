@@ -15,17 +15,17 @@
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
 ## kubernetes architecture
-<p align="left">
- <img src="/images/kubernetes-architecture.png" alt="Permissions" width="80%" height="50%" />
+<p align="center">
+ <img src="/images/Kub.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
 
 ### When you install Kubernetes on a system, you're actually installing the following components. In the master
--  API server: acts as the front end for Kubernetes. The users, management devices,command line interfaces, all talk
+
+-  kubelet API service:  Kubelet is the agent that runs on each node in the cluster.
 -  etcd service: it's the database key value store used by Kubernetes to store all data used to manage the cluster. etcd stores all that information bout all the worker 
 -  Schedulers: The Scheduler is responsible for distributing work or containers It looks for newly created containers and assigns them to nodes. 
 -  Controllers: They are responsible for noticing and responding when nodes, containers or end points goes down The controllers make decisions to bring up new containers 
 - Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
--  kubelet API service: finally Kubelet is the agent that runs on each node in the cluster.
 
   
 ###  following components will install in every nodes or worker
@@ -45,10 +45,13 @@ application. As you can see we now have two instances of our web application
 running on two separate PODs on the same kubernetes system or node.
 What if the user base FURTHER increases and your current node has no sufficient
 capacity? Well THEN you can always deploy additional PODs on a new node in the
-cluster. You will have a new node added to the cluster 
+cluster. You will have a new node added to the cluster.
+
+#### that`s enough now let's have some fun and write command 
+###### we assume that you did install minikube and you have kubectl installed
 - ###### How to run a pods using kubectl
 ```diff
-# lunch pod with nginx container insane 
+# lunch pod with nginx container inside it 
 + kubectl run nginx –-image nginx
 
 # list all pods 
