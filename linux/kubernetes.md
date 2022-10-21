@@ -16,8 +16,19 @@
 
 ### kubernetes architecture
 <p align="left">
- <img src="/images/kubernetes-architecture.jpg" alt="Permissions" width="80%" height="50%" />
+ <img src="/images/kubernetes-architecture.png" alt="Permissions" width="80%" height="50%" />
 </p>
+
+##### When you install Kubernetes on a system, you're actually installing the following components. An API 
+-  API server: acts as the front end for Kubernetes. The users, management devices,command line interfaces, all talk
+-  etcd service: it's the database key value store used by Kubernetes to store all data used to manage the cluster. etcd stores all that information bout all the worker 
+-  Schedulers: The Scheduler is responsible for distributing work or containers It looks for newly created containers and assigns them to nodes. 
+-  Controllers: They are responsible for noticing and responding when nodes, containers or end points goes down The controllers make decisions to bring up new containers 
+- Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
+-  kubelet service: finally Kubelet is the agent that runs on each node in the cluster.
+
+  
+
 ### PODs Again!
 Here we see the simplest of simplest cases were you have a single node kubernetes
 cluster with a single instance of your application running in a single docker container
