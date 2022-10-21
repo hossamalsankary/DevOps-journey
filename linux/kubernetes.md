@@ -88,4 +88,9 @@ spec:
 
 # this the same like (kubectl run nginx –-image nginx)
 @@@
+# now run 
++ kubectl create -f filename.yuml 
+
+# resale
+! pod/myapp-pod created
 ```
