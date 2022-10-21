@@ -1,6 +1,17 @@
+# content
+- #### [Setup Kubernetes lab](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#setup-kubernetes-lab)
+- #### [kubernetes architecture](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-architecture)
+- #### [Pods Again](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#pods-again)
+- #### [Replica set](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#replica-set)
+- #### [Kubernetes Deployments.](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-deployments)
+
+
+
+
+
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
-# Setup Kubernetes lab
+## Setup Kubernetes lab
 
 #### Using minikube to setup our lab
 ##### What you’ll need
@@ -11,10 +22,11 @@
 - ##### VirtualBox, 
 - ##### flow this gide line to setup our lab
 
-#### =====> [minikube Installation ](https://minikube.sigs.k8s.io/docs/start/)
+#### [minikube Installation ](https://minikube.sigs.k8s.io/docs/start/)
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
-# kubernetes architecture
+## kubernetes architecture
+
 <p align="center">
  <img src="/images/Kub.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
@@ -33,7 +45,7 @@
 - Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
 - and other components we talk about it later
 
-# PODs Again!
+## PODs Again!
 Here we see the simplest of simplest cases were you have a single node kubernetes
 cluster with a single instance of your application running in a single docker container
 encapsulated in a POD. What if the number of users accessing your application
@@ -95,8 +107,10 @@ spec:
 ! pod/myapp-pod created
 ```
 
+### -------------------------------------------------------------------------------------------------------------------------------------
 
-# Replica set
+
+## Replica set
 ###### So what is a replica and why do we need a replication controller?
  we had a single POD running our application. What if for some
 reason, our application crashes and the POD fails? Users will no longer be able to
@@ -199,8 +213,9 @@ spec:
  <img src="/images/scale rep.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
 
+### -------------------------------------------------------------------------------------------------------------------------------------
 
-#  Commands 
+## Replica set Commands 
 
 ```diff 
 # create replicaset
@@ -221,8 +236,9 @@ spec:
 # scale on fly 
 > kubectl scale –replicas=6 -f  replica_set.yml 
 ```
+### -------------------------------------------------------------------------------------------------------------------------------------
 
-#  Kubernetes Deployments.
+##  Kubernetes Deployments.
 
 say for example you would like to make multiple changes to your environment
 You do not want to
@@ -328,3 +344,17 @@ spec:
  <img src="/images/rollyback.png" alt="Permissions" width="100%" height="80%" />
 </p>
 
+## Kubernetes Deployments  Commands
+``` diff 
+> kubectl create –f myapp-deployment.yml 
+
+> kubectl apply –f myapp-deployment.yml 
+
+> kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
+
+> kubectl rollout status deployment/myapp-deployment
+
+> kubectl rollout history deployment/myapp-deployment
+
+> kubectl rollout undo deployment/myapp-deployment
+```
