@@ -10,12 +10,14 @@
 - ##### Internet connection
 - ##### VirtualBox, 
 - ##### flow this gide line to setup our lab
-```diff 
-! https://minikube.sigs.k8s.io/docs/start/
 
-```
+#### =====> [minikube Installation ](https://minikube.sigs.k8s.io/docs/start/)
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
+### kubernetes architecture
+<p align="left">
+ <img src="/images/kubernetes-architecture.jpg" alt="Permissions" width="80%" height="50%" />
+</p>
 ### PODs Again!
 Here we see the simplest of simplest cases were you have a single node kubernetes
 cluster with a single instance of your application running in a single docker container
