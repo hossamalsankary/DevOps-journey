@@ -1,10 +1,11 @@
 # content
-- #### [Setup Kubernetes lab](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#setup-kubernetes-lab)
-- #### [kubernetes architecture](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-architecture)
-- #### [Pods Again](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#pods-again)
-- #### [Replica set](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#replica-set)
-- #### [Kubernetes Deployments.](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-deployments)
-
+- #### [Setup Kubernetes lab](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#setup-kubernetes-lab-1)
+- #### [kubernetes architecture](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-architecture-1)
+- #### [Pods Again](https://github.com/hossamalsankary/DevOps-journey/edit/master/linux/kubernetes.md#pods-again-1)
+- #### [Replica set](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#replica-set-1)
+- #### [Replica Set Commands](https://github.com/hossamalsankary/DevOps-journey/edit/master/linux/kubernetes.md#replica-set-commands)
+- #### [Kubernetes Deployments.](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-deployments-1)
+- #### [Kubernetes Deployments Commands](https://github.com/hossamalsankary/DevOps-journey/edit/master/linux/kubernetes.md#kubernetes-deployments--commands)
 
 
 
