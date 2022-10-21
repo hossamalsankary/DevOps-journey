@@ -67,7 +67,7 @@ cluster. You will have a new node added to the cluster.
  <img src="/images/pod1.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
 
-### Create Pod With YUML file [link](template/pod_wth_yuml.yml)
+### Create Pod With YUML file [link](/template/pod_wth_yuml.yml)
 ```diff 
 @@@
 #For now since we are working on
@@ -117,7 +117,7 @@ automatically bringing up a new POD when the existing one fails.
  <img src="/images/replica.jpg" alt="Permissions" width="100%%" height="100%%" />
 </p>
 
-### Define Replica set [link](template/replica_set.yml)
+### Define Replica set [link](/template/replica_set.yml)
 
 ```diff
 apiVersion: apps/v1 #The apiVersion though is a bit different. It is apps/v1 which is different from
