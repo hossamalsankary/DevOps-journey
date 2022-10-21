@@ -1,6 +1,6 @@
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
-### Setup Kubernetes lab
+# Setup Kubernetes lab
 
 #### Using minikube to setup our lab
 ##### What you’ll need
@@ -14,7 +14,7 @@
 #### =====> [minikube Installation ](https://minikube.sigs.k8s.io/docs/start/)
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
-## kubernetes architecture
+# kubernetes architecture
 <p align="center">
  <img src="/images/Kub.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
@@ -33,7 +33,7 @@
 - Container Runtime: in such cases. The Container Runtime is the underlying software that is used to run containers.
 - and other components we talk about it later
 
-### PODs Again!
+# PODs Again!
 Here we see the simplest of simplest cases were you have a single node kubernetes
 cluster with a single instance of your application running in a single docker container
 encapsulated in a POD. What if the number of users accessing your application
@@ -94,10 +94,9 @@ spec:
 # resale
 ! pod/myapp-pod created
 ```
-### - you can find this template here 
 
 
-### Replica set
+# Replica set
 ###### So what is a replica and why do we need a replication controller?
  we had a single POD running our application. What if for some
 reason, our application crashes and the POD fails? Users will no longer be able to
@@ -213,7 +212,7 @@ spec:
 # to edit  the  replica file
 > kubectl edit  replicaset replicasetppp
  
-
+# delete replicaset
 > kubectl delete replicaset replicasetppp
 
 # update replica_set.yml  af
@@ -222,3 +221,30 @@ spec:
 # scale on fly 
 > kubectl scale –replicas=6 -f  replica_set.yml 
 ```
+
+#  Kubernetes Deployments.
+
+say for example you would like to make multiple changes to your environment
+You do not want to
+apply each change immediately after the command is run, instead you would like to
+apply a pause to your environment, make the changes and then resume so that all
+changes are rolled-out together.
+All of these capabilities are available with the kubernetes Deployments.
+So far in this course we discussed about PODs, which deploy single instances of our
+application such as the web application in this case. Each container is encapsulated in
+PODs. Multiple such PODs are deployed using Replication Controllers or Replica Sets.
+And then comes Deployment which is a kubernetes object that comes higher in the
+hierarchy. The deployment provides us with capabilities to upgrade the underlying
+instances seamlessly using rolling updates, undo changes, and pause and resume
+changes to deployments.
+
+### Deployment Strategy
+<p align="left">
+ <img src="/images/deploy.png" alt="Permissions" width="100%" height="80%" />
+</p>
+
+- #### Recreate : the application is down and inaccessible to users. This strategy is known as the Recreate strategy
+
+- #### Rolling Update : we do not destroy all of them at once. Instead we take down the older version and bring up a newer version one by one. This way the application never goes down and the upgrade is seamless.
+
+### Define Kubernetes Deployments [link](/template/replica_set.yml)

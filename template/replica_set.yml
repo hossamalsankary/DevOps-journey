@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: nginx:stable-alpine-perl
+          image: nginx
 
   replicas: 4 
   selector:
