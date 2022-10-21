@@ -2,7 +2,7 @@ apiVersion: apps/v1 #The apiVersion though is a bit different. It is apps/v1 whi
                     #what we had before for replication controller
 kind: ReplicaSet
 metadata:
-  name: replicationcontroller
+  name: replicasetppp
   labels:
     app: myapp
     type: front-end
@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: nginx
+          image: nginx:stable-alpine-perl
 
-  replicas: 3 
+  replicas: 4 
   selector:
    matchLabels:
        type: front-end  # by givin this selector label. we tell replicasets if you fond and 

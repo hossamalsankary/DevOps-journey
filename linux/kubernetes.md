@@ -124,7 +124,7 @@ apiVersion: apps/v1 #The apiVersion though is a bit different. It is apps/v1 whi
                     #what we had before for replication controller
 kind: ReplicaSet
 metadata:
-  name: replicationcontroller
+  name: replicasetppp
   labels:
     app: myapp
     type: front-end
@@ -156,7 +156,7 @@ spec:
 + kubectl create -f replica_set.yml 
 
 # result should be like that
-! replicaset.apps/replicationcontroller created
+! replicaset.apps/replicasetppp created
 
 # let's inspect how many pods we have
 + kubectl get pods
@@ -166,27 +166,59 @@ spec:
 </p>
 
 ```diff 
-# result replicationcontroller-425wj       1/1     Running   0          27m
+# result replicasetppp-425wj       1/1     Running   0          27m
 # we have 3 pods  and if you try to delete any pod replicaset going to create 
 # new one for you and thats what High Availability mean 
 
-+ kubectl delete pod replicationcontroller-425wj 
++ kubectl delete pod replicasetppp-425wj 
 
 #result
-! replicationcontroller-bt824       0/1     ContainerCreating   0          3s
+! replicasetppp-bt824       0/1     ContainerCreating   0          3s
 ```
 <p align="left">
  <img src="/images/repsetDEL.png" alt="Permissions" width="100%%" height="100%%" />
 </p>
-### commands 
+
+
+### edit replicaset file
+
+```diff 
+# now let's open replicaset  replicasetppp file
++ kubectl edit replicaset  replicasetppp
+
+# now scale   replicas: to  4 nd  press :wq
+! this will out update the replicaset pods
+
+#  another way to do that
+! open the file replica_set.yml  with any editor 
+! and change replicaset and save it
++  kubectl replace -f  replica_set.yml 
+
+
+```
+<p align="left">
+ <img src="/images/scale rep.png" alt="Permissions" width="100%%" height="100%%" />
+</p>
+
+
+#  Commands 
 
 ```diff 
 # create replicaset
-+ kubectl create –f rreplica_set.yml 
+> kubectl create –f replica_set.yml 
 
+# list of all replica in the 
 > kubectl get replicaset
-> kubectl delete replicaset myapp-replicaset
-*Also deletes all underlying PODs
-> kubectl replace -f replicaset-definition.yml
-> kubectl scale –replicas=6 -f replicaset-definition.yml
+
+# to edit  the  replica file
+> kubectl edit  replicaset replicasetppp
+ 
+
+> kubectl delete replicaset replicasetppp
+
+# update replica_set.yml  af
+> kubectl replace -f  replica_set.yml 
+
+# scale on fly 
+> kubectl scale –replicas=6 -f  replica_set.yml 
 ```
