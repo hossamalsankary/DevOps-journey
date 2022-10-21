@@ -247,4 +247,84 @@ changes to deployments.
 
 - #### Rolling Update : we do not destroy all of them at once. Instead we take down the older version and bring up a newer version one by one. This way the application never goes down and the upgrade is seamless.
 
-### Define Kubernetes Deployments [link](/template/replica_set.yml)
+### Define Kubernetes Deployments [link](/template/myapp-deployment.yml)
+```diff 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox
+        command:
+        - sh
+        - "-c"
+        - echo Hello Kubernetes! && sleep 3600
+
+```
+```diff
+# Run deployment 
+> kubectl create -f myapp-deployment.yml 
+```
+<p align="left">
+ <img src="/images/appd1.png" alt="Permissions" width="100%" height="80%" />
+</p>
+
+```diff 
+# show the deployment status
+> kubectl rollout status deployment/myapp-deployment
+
+#list all 
+> kubectl get deployments
+
+#result
+! myapp-deployment   3/3     3            3           6m29s
+
+
+# now let's change the image to nginx
+> vi myapp-deployment.yml 
+
+# than save the file
+
+#  apply changes
++ kubectl apply –f  myapp-deployment.yml 
+
+```
+ - ##### now open  describe any pod to see changes
+
+ ```diff
+! kubectl rollout history deployment
+
+! kubectl desribe pod myapp-deployment-5474c5bbdc-h7dxz
+
+# 
+ ```
+<p align="left">
+ <img src="/images/madin.png" alt="Permissions" width="100%" height="80%" />
+</p>
+
+
+## Rollback
+```diff 
+# with deployment you can undo changes easily if something went wrong  
+# Rollback
++ kubectl rollout undo deployment/myapp-deployment
+```
+- ### Rollback and undo 
+<p align="left">
+ <img src="/images/rollyback.png" alt="Permissions" width="100%" height="80%" />
+</p>
+

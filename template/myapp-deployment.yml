@@ -6,7 +6,7 @@ metadata:
     app: myapp
 
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       name: busybox-pod
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: busybox-container
-        image: busybox
+        image: nginx
         command:
         - sh
         - "-c"
