@@ -94,3 +94,23 @@ spec:
 # resale
 ! pod/myapp-pod created
 ```
+
+### Replica
+###### So what is a replica and why do we need a replication controller?
+ we had a single POD running our application. What if for some
+reason, our application crashes and the POD fails? Users will no longer be able to
+access our application. To prevent users from losing access to our application, we
+would like to have more than one instance or POD running at the same time. That
+way if one fails we still have our application running on the other one. The replication
+controller helps us run multiple instances of a single POD in the kubernetes cluster
+thus providing High Availability.
+So does that mean you can’t use a replication controller if you plan to have a single
+POD? No! Even if you have a single POD, the replication controller can help by
+automatically bringing up a new POD when the existing one fails.
+###### replica can help us in
+- ###### Load Balancing & Scaling
+- ###### High Availability
+
+<p align="left">
+ <img src="/images/replica.jpg" alt="Permissions" width="100%%" height="100%%" />
+</p>
