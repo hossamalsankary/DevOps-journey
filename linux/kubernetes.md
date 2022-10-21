@@ -94,6 +94,8 @@ spec:
 # resale
 ! pod/myapp-pod created
 ```
+### - you can find this template here [link](templatets/pod_wth_yuml.yml)
+
 
 ### Replica set
 ###### So what is a replica and why do we need a replication controller?
@@ -147,6 +149,7 @@ spec:
 
 
 ```
+### - you can find this template here [link](templatets/replica_set.yml)
 ```diff 
 # now run this template 
 + kubectl create -f replica_set.yml 
