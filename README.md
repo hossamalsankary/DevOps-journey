@@ -4,5 +4,5 @@
 
 ## Knowing Linux Basics
 
-- [✔️] 🐧 1  > [Linux essential commands  for DevOps] (Actually everyone)](linux/LinuxCommands.md)
+- [✔️] 🐧 1  > [Linux LFCS](linux/LinuxCommands.md)
 - [✔️] ☸️ 2  > [Kubernetes](linux/kubernetes.md)
