@@ -1,9 +1,9 @@
 # Content
 
-- ### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#read-and-use-system-documentation) 
-- ### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files)
-- ### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies)
-- ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
+- ### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#read-and-use-system-1) 
+- ### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files-1)
+- ### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
+- ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions-1)
 
 
 
