@@ -231,8 +231,97 @@
 
   ```
   #### -------------------------------------------------------------------------------------------------------------------------------------
-## Archiving (Packing), Compressing and Backup
 
+  ## Evaluate and compare the basic file system features and options
+- ##### Compare and manipulate file content diff 
+```diff 
+#- Compare file1 and file 2
+> diff file1 file2 
+
+# Compare file1 and file 2 with output in two columns
+> diff -y file1 file2 
+
+# result   !file1!                              !file2!
+! hello linux / hello aws		 			      |	hello linux / hello world
+
+```
+- ##### Filter adjacent matching lines from file
+
+```diff 
+# we have file has a lot of repeated  data and you want to filter it
+> uniq file > newuniqfile - Remove equal consecutive rows
+
+#Remove equal consecutive rows comparing only first two characters
+> uniq -w 2 fle -
+
+#Remove equal consecutive rows and show number of occurrences
+> uniq -c file  
+```
+- ##### Filter and order file content
+```diff
+#Write sorted concatenation of all FILE
+> sort file
+
+#ignore leading blanks
+> sort -b file
+ ```
+
+ - ##### Print selected parts of lines from each  FILE to standard output.
+```diff 
+#  -d, --delimiter
+# -d, --delimiter
+# run this command in your terminal to
+! echo "hello from linux terminal" > file
+
+> cut -d " " -f 1,3 file
+# result 
+! hello
+
+
+> cut -d " " -f 1,3 file
+
+#result 
+! hellp linux
+
+
+```
+- #### show the content of file on your terminal
+```diff 
+# display the content of file
+> cat fi
+
+# --number-nonblank
+> cat -b file
+
+# Print first 10 file lines
+> head file
+
+# Print first 2 file lines
+> head -n 2 file
+
+> head -n 3 /etc/os-release 
+
+## Print last 10 file lines
+> tail -n 2 file
+
+> tail -n 3 /etc/os-release 
+
+```
+- #### tr translate set of characters one to set of characters two
+
+```diff 
+> echo "hellp hossam" | tr " " _
+#result 
+! hellp_hossam
+
+> echo "hellp Dhossam" | tr --delete [:lower:]
+#result 
+! D
+
+> echo "hellp Dhossam" | tr --delete [:blank:]
+#result
+! hellpDhossam
+```
 
 
 #### -------------------------------------------------------------------------------------------------------------------------------------
