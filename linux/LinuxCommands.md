@@ -9,12 +9,13 @@
 </p>
 
 
+
 # Kubernetes Concepts – PODs, ReplicaSets, Deployments
 
 ## Read and Use System
 
 ```diff
-# for simple help we can used this command 
+# for simple help we can used this command -
 + ls --help
 
 # Manual Pages With man Command
