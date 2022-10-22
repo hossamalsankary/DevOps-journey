@@ -1,4 +1,4 @@
-# Content
+# Content 
 
 - ### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#read-and-use-system-1) 
 - ### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files-1)
@@ -6,6 +6,7 @@
 - ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions-1)
 
 
+# Kubernetes Concepts – PODs, ReplicaSets, Deployments
 
 ## Read and Use System
 
@@ -401,3 +402,5 @@
  <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
 </p>
 
+
+# Networking in Kubernetes
