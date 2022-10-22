@@ -5,6 +5,10 @@
 - ### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies)
 - ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions)
 
+
+
+## Read and Use System
+
 ```diff
 # for simple help we can used this command 
 + ls --help
@@ -33,7 +37,7 @@
 + ls -alSh
 
 ```
-- #####  Move Around In The System
+- ##  Move Around In The System
 
 ```diff
 # The root directory in linux is  /  let's move to  root 
@@ -88,7 +92,7 @@
 ```
 
 ### -------------------------------------------------------------------------------------------------------------------------------------
-### Search for Files
+## Search for Files
 ```diff
 ! find [/path/to/directory] [search_parameters] 
 # lookup for exact name
@@ -164,7 +168,7 @@
 + find /usr/bin/ -perm /u=rw,g=rw,o=r
 ```
 ### -------------------------------------------------------------------------------------------------------------------------------------
-### Search for txt inside flies
+## Search for txt inside flies
  - ###### Searching With Grep
  ```diff 
  ! grep [options] ‘search_pattern’ file
@@ -227,7 +231,7 @@
 
   ```
   #### -------------------------------------------------------------------------------------------------------------------------------------
-### Archiving (Packing), Compressing and Backup
+## Archiving (Packing), Compressing and Backup
 
 
 
