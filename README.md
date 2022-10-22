@@ -6,3 +6,7 @@
 
 - [✔️] 🐧 1  > [Linux essential commands
  for DevOps (Actually everyone)](linux/LinuxCommands.md)
+<<<<<<< HEAD
+=======
+- [✔️] ☸️ 2  > [Kubernetes](linux/kubernetes.md)
+>>>>>>> dev/master

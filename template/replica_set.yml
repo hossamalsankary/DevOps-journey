@@ -1,0 +1,29 @@
+apiVersion: apps/v1 #The apiVersion though is a bit different. It is apps/v1 which is different from
+                    #what we had before for replication controller
+kind: ReplicaSet
+metadata:
+  name: replicasetppp
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template: # there we provide the pod template to tell replicaset 
+            # used this temple in case any pod goes down
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end # notice we will give tis label to selector to identify  
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+  replicas: 4 
+  selector:
+   matchLabels:
+       type: front-end  # by givin this selector label. we tell replicasets if you fond and 
+                        # pods have this label join it to our replicasets
+
+       
+
