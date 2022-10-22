@@ -6,7 +6,7 @@
 - ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#change-file-permissions-1)
 
 <p align="left">
- <img src="/images/background.png" alt="Permissions" width="50%" height="40%" />
+ <img src="/background.png" alt="Permissions" width="50%" height="40%" />
 </p>
 
 
