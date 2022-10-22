@@ -4,6 +4,9 @@
 - ### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-files-1)
 - ### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
 - ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/edit/main/linux/LinuxCommands.md#change-file-permissions-1)
+<p align="left">
+ <img src="/images/background.png" alt="Permissions" width="50%" height="40%" />
+</p>
 
 
 # Kubernetes Concepts – PODs, ReplicaSets, Deployments
