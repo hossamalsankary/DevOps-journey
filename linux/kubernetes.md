@@ -7,6 +7,7 @@
 - #### [Kubernetes Deployments.](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-deployments-1)
 - #### [Kubernetes Deployments Commands](https://github.com/hossamalsankary/DevOps-journey/blob/master/linux/kubernetes.md#kubernetes-deployments--commands)
 
+- #### [Kubernetes Service]()
 
 
 
@@ -358,4 +359,55 @@ spec:
 > kubectl rollout history deployment/myapp-deployment
 
 > kubectl rollout undo deployment/myapp-deployment
+```
+## Kubernetes Service
+- #####  What are the types of Kubernetes services? 
+Kubernetes services connect a set of pods to an abstracted service name and IP address. Services provide discovery and routing between pods. For example, services connect an application front-end to its backend, each of which running in separate deployments in a cluster. Services use labels and selectors to match pods with other applications. The core attributes of a Kubernetes service are:
+ 
+----------------------------------------------------------------------------------------
+      ClusterIP           |       NodePort         |   LoadBalancer
+----------------------------------------------------------------------------------------
+ Exposes a service        | Exposes a service via  |  Exposes the service via the cloud 
+ which is only accessible | a static port on each  |   provider’s load balancer.
+ from within the cluster. | node’s IP.             |
+                          |                        |
+                          |                        |
+----------------------------------------------------------------------------------------
+
+- #####  So how can we implement?
+
+- ###### ClusterIP [link](/deploy/service/redis_services.yml)
+```diff 
+# this example for ClusterIP service for redis database
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  ports:
+    - targetPort: 5432
+      port: 5432
+   
+  selector:
+    name: db
+
+```
+
+- ###### NodePort [link](/deploy/service/result_app_service.yml)
+
+```diff 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30004
+  selector:
+    app: votingApp
+
 ```
