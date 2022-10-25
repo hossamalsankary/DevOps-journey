@@ -363,20 +363,20 @@ spec:
 ## Kubernetes Service
 - #####  What are the types of Kubernetes services? 
 Kubernetes services connect a set of pods to an abstracted service name and IP address. Services provide discovery and routing between pods. For example, services connect an application front-end to its backend, each of which running in separate deployments in a cluster. Services use labels and selectors to match pods with other applications. The core attributes of a Kubernetes service are:
- 
-----------------------------------------------------------------------------------------
+```diff
+-------------------------------------------------------------------------------------------
       ClusterIP           |       NodePort         |   LoadBalancer
-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
  Exposes a service        | Exposes a service via  |  Exposes the service via the cloud 
  which is only accessible | a static port on each  |   provider’s load balancer.
  from within the cluster. | node’s IP.             |
                           |                        |
-                          |                        |
-----------------------------------------------------------------------------------------
-
+                          |                        |                            
+--------------------------------------------------------------------------------------------
+```
 - #####  So how can we implement?
 
-- ###### ClusterIP [link](/deploy/service/redis_services.yml)
+- ###### ClusterIP [link](/kubernetes/deploy/service/redis_services.yml)
 ```diff 
 # this example for ClusterIP service for redis database
 apiVersion: v1
@@ -393,7 +393,7 @@ spec:
 
 ```
 
-- ###### NodePort [link](/deploy/service/result_app_service.yml)
+- ###### NodePort [link](/kubernetes/deploy/service/result_app_service.yml)
 
 ```diff 
 
