@@ -345,7 +345,6 @@
 > sed "s/javascript/go/" ~/test_file  
 
 # make this change permanent 
-
 > sed -i "s/javascript/go/g" ~/test_file  
 
 # file - For row 10, it will change first occurrence of source to target. Print all rows.
@@ -402,14 +401,12 @@ tar czvf file.tar.gz *
 # without any notify -rf
 > rm --recursive --force   directory
 
--- ----------------------------------------------------------------
 #copy and remove
 > cp file ~/home
  
 # directory to home -rf
 > cp --recursive --force  ./test ~/home
 
--- --------------------------------------------------------------------
 #move and remove
 > mv file ~/home
  
