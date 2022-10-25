@@ -8,7 +8,7 @@
 - ##### [ Evaluate and compare the basic file system features and options](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#evaluate-and-compare-the-basic-file-system-features-and-options)
 - ##### [Archive-Backup-Compress](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#archive-backup-compress-unpack-and-uncompress-files)
 - ##### [Create delete copy and move- files and directories](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#create-delete-copy-and-move-files-and-directories)
-- ##### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#change-file-permissions-1)
+- ##### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#change-file-permissions-1)
 
 
 
