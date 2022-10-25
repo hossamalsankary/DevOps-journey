@@ -327,9 +327,77 @@
 #result
 ! hellpDhossam
 ```
+- ##### sedd
+-  Sed is a stream editor.  A stream editor is used to  per‐
+       form  basic  text  transformations  on an input stream (a
+       file or input from a pipeline).  While in some ways simi‐
+       lar  to  an  editor which permits scripted edits (such as
+       ed), sed works by making only one pass over the input(s),
+```diff 
+# sed - Without -i the results of file alteration won't be permanent
+> sed " " file path
+# change all the words javascript to go on the flay this not will be effective to the file
+> sed "s/javascript/go/" ~/test_file  
+
+# change all the words javascript to go on the flay this not will be effective to the file
+> sed "s/javascript/go/" ~/test_file  
+
+# make this change permanent 
+
+> sed -i "s/javascript/go/g" ~/test_file  
+
+# file - For row 10, it will change first occurrence of source to target. Print all rows.
+>  sed "10si/javascript/go/g" ~/test_file 
+
+!important 
+# if you want  to delete all word javascript 
+> sed "/javascript/" ~/test_file 
 
 
-#### -------------------------------------------------------------------------------------------------------------------------------------
+```
+ ## Archive, backup, compress, unpack, and uncompress files
+ - ##### tar - Save many files into a single file.
+ ```diff 
+#crate tar file 
+tar cf file.tar *
+
+#list active 
+> tar --list --file   file.tar
+> tar tfv file.tar
+
+# extract tar 
+tar xf file.tar
+
+# with gzip 
+tar czvf file.tar.gz *
+
+#list active 
+> tar --list --file   file.tar.gz 
+> tar tfv  file.tar.gz  
+
+# extract tar 
+> tar xf file.tar
+
+ ```
+ ##  Create, delete, copy, and move files and directories
+
+```diff 
+# Remove file 
+> rm file_name
+
+# Remove directory  with a notify before delete
+> rm --recursive  directory
+
+# without any notify
+> rm --recursive --force   directory
+
+-- hshsh
+
+```
+
+
+#### 
+-------------------------------------------------------------------------------------------------------------------------------------
 ### Change File Permissions
 <p align="left">
  <img src="/images/Files-permissions.png" alt="Permissions" width="50%" height="40%" />
