@@ -1,17 +1,18 @@
+ <img src="/background.png" alt="Permissions" width="300" align="right" />
+
 # Content 
 
-- ### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#read-and-use-system-1) 
-- ### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-files-1)
-- ### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
-- ### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#change-file-permissions-1)
+- ##### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#read-and-use-system-1) 
+- 
+- ##### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-files-1)
+- ##### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
 
-<p align="left">
- <img src="/background.png" alt="Permissions" width="50%" height="40%" />
-</p>
-
+- ##### [ Evaluate and compare the basic file system features and options](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#evaluate-and-compare-the-basic-file-system-features-and-options)
+- ##### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#change-file-permissions-1)
 
 
-# Kubernetes Concepts – PODs, ReplicaSets, Deployments
+
+
 
 ## Read and Use System
 
