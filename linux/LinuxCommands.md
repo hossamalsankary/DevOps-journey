@@ -388,11 +388,22 @@ tar czvf file.tar.gz *
 # Remove directory  with a notify before delete
 > rm --recursive  directory
 
-# without any notify
+# without any notify -rf
 > rm --recursive --force   directory
 
--- hshsh
+-- ----------------------------------------------------------------
+#copy and remove
+> cp file ~/home
+ 
+# directory to home -rf
+> cp --recursive --force  ./test ~/home
 
+-- --------------------------------------------------------------------
+#move and remove
+> mv file ~/home
+ 
+# move directory to home -rf
+> mv --recursive --force  ./test ~/home
 ```
 
 
