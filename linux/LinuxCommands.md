@@ -384,6 +384,15 @@ tar czvf file.tar.gz *
  ##  Create, delete, copy, and move files and directories
 
 ```diff 
+#create file
+> mkdir test 
+
+#with -p you can create  directory inside directory 
+> mkdir -p mi/ch/test 
+
+#touch file 
+> touch test-file
+
 # Remove file 
 > rm file_name
 
