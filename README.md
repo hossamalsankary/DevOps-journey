@@ -5,4 +5,7 @@
 ## Knowing Linux Basics
 
 - [✔️] 🐧 1  > [Linux LFCS](linux/LinuxCommands.md)
+
 - [✔️] ☸️  2  > [Kubernetes](linux/kubernetes.md)
+
+- [✔️] ☸️  3  > [Git](linux/git.md)
