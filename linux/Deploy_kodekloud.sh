@@ -63,7 +63,7 @@ checkIfTheServiceIsActive "mariadb"
 echo "-----------------------Configure firewall for Database-------------------------"
  firewall-cmd --permanent --zone=public --add-port=3306/tcp
 
-if  $( firewall-cmd --permanent --zone=public --add-port=3306/tcp ) 
+if [[ $( ) = "*3306/tcp*" ]] 
   
  then
 
@@ -80,3 +80,6 @@ if  $( firewall-cmd --permanent --zone=public --add-port=3306/tcp )
  echo  "----------------------- Configure Database ------------------------- "
  mysql -e "CREATE DATABASE ecomdb; CREATE USER 'ecomuser'@'localhost' IDENTIFIED BY 'ecompassword';
  GRANT ALL PRIVILEGES ON *.* TO 'ecomuser'@'localhost'; FLUSH PRIVILEGES;"
+
+
+ # ---------------------------------------------------------
