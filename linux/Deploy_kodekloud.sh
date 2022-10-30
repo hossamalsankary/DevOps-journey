@@ -31,21 +31,21 @@ function checkIfTheServiceIsActive() {
     fi
 }
 
-# function isThePortConf(){
-#  iSportOpen=$(sudo firewall-cmd --list-ports)
+function isThePortConf(){
+ iSportOpen=$(sudo firewall-cmd --list-ports)
  
-#  if [[ $iSportOpen = "*$1*" ]]
+ if [[ $iSportOpen = *$1* ]]
   
-#  then
+ then
 
-#     showMessage "blue" "This port is exist"
+    showMessage "blue" "This port is exist"
  
-#  else
-#      showMessage "red" "This port is not exist"
+ else
+     showMessage "red" "This port is not exist"
 
-#  fi
+ fi
 
-# }
+}
 
 echo "----------------------Deploy Pre-Requisites --------------------------------- "
 yum install -y firewalld > input
@@ -62,24 +62,52 @@ checkIfTheServiceIsActive "mariadb"
 
 echo "-----------------------Configure firewall for Database-------------------------"
  firewall-cmd --permanent --zone=public --add-port=3306/tcp
-
-if [[ $( ) = "*3306/tcp*" ]] 
-  
- then
-
-     showMessage "blue" "port configure !"
-     firewall-cmd --reload
- 
- else
-     showMessage "red" "This port is no exist"
-
- fi
+ firewall-cmd --reload
+ isThePortConf 3306
 
 
- #----------------------- Configure Database -------------------------
+
+
  echo  "----------------------- Configure Database ------------------------- "
  mysql -e "CREATE DATABASE ecomdb; CREATE USER 'ecomuser'@'localhost' IDENTIFIED BY 'ecompassword';
  GRANT ALL PRIVILEGES ON *.* TO 'ecomuser'@'localhost'; FLUSH PRIVILEGES;"
 
 
- # ---------------------------------------------------------
+ echo  "------------------------------Load Product Inventory Information to database--------------------------- "
+
+cat > db-load-script.sql <<-EOF
+    USE ecomdb;
+    CREATE TABLE products (id mediumint(8) unsigned NOT NULL auto_increment,Name varchar(255) default NULL,Price varchar(255) default NULL, ImageUrl varchar(255) default NULL,PRIMARY KEY (id)) AUTO_INCREMENT=1;
+
+    INSERT INTO products (Name,Price,ImageUrl) VALUES ("Laptop","100","c-1.png"),("Drone","200","c-2.png"),("VR","300","c-3.png"),("Tablet","50","c-5.png"),("Watch","90","c-6.png"),("Phone Covers","20","c-7.png"),("Phone","80","c-8.png"),("Laptop","150","c-4.png");
+EOF
+
+    mysql < db-load-script.sql
+
+echo "----------------------------------------------Deploy and Configure Web -----------------------------------"
+    sudo yum install -y httpd php php-mysql >> input
+    sudo service httpd start
+    sudo systemctl enable httpd
+    sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
+    sudo firewall-cmd --reload
+    checkIfTheServiceIsActive httpd
+    isThePortConf 80
+
+echo "---------------------------------------------- Configure httpd -----------------------------------"
+sudo sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
+
+
+echo "----------------------------------------------Download the code----------------------------------------"
+sudo yum install -y git
+git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/ >> input
+
+sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
+ showMessage "blue" "done"
+
+echo "----------------------------------------------test the app----------------------------------------"
+Request=$(curl http://localhost)
+
+if [[ $Request = *VR* ]]
+then
+ showMessage "blue" "succeed deployment"
+fi
