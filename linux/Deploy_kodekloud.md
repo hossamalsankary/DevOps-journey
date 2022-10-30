@@ -98,7 +98,7 @@ sudo sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
 
 
 echo "----------------------------------------------Download the code----------------------------------------"
-sudo yum install -y git
+sudo yum install -y git >> input
 git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/ >> input
 
 sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
