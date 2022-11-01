@@ -98,14 +98,12 @@
 + sudo gpasswd -a hossam dev
 
 # Force use GROUP as new primary group
-
-app
++ usermod --gid  dev  hossam
+-- hossama : dev
 
 #  Remove USER from GROUP
 + sudo gpasswd --delete dev hossam
 # resale
-+ usermod --gid  dev  hossam
--- hossama : dev
 # update  group name 
 + groupmod ---new-name dev developers
 
