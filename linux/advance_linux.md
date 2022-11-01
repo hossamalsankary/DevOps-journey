@@ -1,7 +1,7 @@
 # Content
 
 - #### [Create, delete, and modify local user accounts]()
-- #### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#change-file-permissions-1)
+- #### [Change File Permissions](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/advance_linux.md#change-file-permissions-1)
 
 ## Create, delete, and modify local user accounts
 - #### Create new used 
