@@ -3,8 +3,8 @@
  <img src="/background.png" alt="Permissions" width="200" align="right" />
 
 - ##### [Read and Use System](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#read-and-use-system-1)  
-- ##### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-files-1)
-- ##### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
+- ##### [Search For Files](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#search-for-files-1)
+- ##### [Search inside flies](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#search-for-txt-inside-flies-1)
 - ##### [ Evaluate and compare the basic file system features and options](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#evaluate-and-compare-the-basic-file-system-features-and-options)
 - ##### [Archive-Backup-Compress](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#archive-backup-compress-unpack-and-uncompress-files)
 - ##### [Create delete copy and move- files and directories](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/LinuxCommands.md#create-delete-copy-and-move-files-and-directories)
