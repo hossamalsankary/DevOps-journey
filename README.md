@@ -4,9 +4,9 @@
 
 ## Knowing Linux Basics
 
-- [✔️] 🐧 1  > [Linux LFCS](linux/LinuxCommands.md)
-- [✔️] 🐧 1  > [ Advance Linux ](linux/advance_linux.md)
+- [✔️] 🐧 1  > [Linux Commands must know](linux/LinuxCommands.md)
+- [✔️] 🐧 2  > [ Advance Linux topics ](linux/advance_linux.md)
 
-- [✔️] ☸️  2  > [Kubernetes](linux/kubernetes.md)
+- [✔️] ☸️  3  > [Kubernetes](linux/kubernetes.md)
 
-- [✔️] ☸️  3  > [Git](linux/git.md)
+- [✔️] ☸️  4  > [Git](linux/git.md)
