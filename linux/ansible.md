@@ -1,13 +1,12 @@
 
 
 # Content 
- <img src="/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
+ <img src="/images/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
 
-- ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES]()  
-- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES]()  
-- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES]()  
-- ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT]()  
-- ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING]()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--packages-1)  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-2)  
+- ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--filecontent-1)  
+- ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
 - ##### []()  
 - ##### []()  
 - ##### []()  
