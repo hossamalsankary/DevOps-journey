@@ -7,7 +7,8 @@
 - ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--filecontent-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
-- ##### []()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS
+](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks)  
 - ##### []()  
 - ##### []()  
 
@@ -86,7 +87,7 @@
       service:
         name: httpd
         state: started
-
+https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks
 ```
 - ##### We have a playbook ~/playbooks/file.yml to copy a file with a welcome message under httpd server's document root on web1 node. Make changes in the playbook so that httpd server reloads after copying the file, make sure it does not restart the httpd server.
 
@@ -515,6 +516,8 @@
         job: "yum -y update"
         cron_file: ansible_yum
  ```
+
+ # LABS – MODULES – USERS AND GROUPS
 
  - ###### Write a playbook create_user.yml to create a user named admin with group: admin and uid: 2048 NOTE: Your playbook must be placed inside folder: /home/thor/playbooks/. Run this playbook for all servers which are listed in /home/thor/playbooks/inventory file.
 
