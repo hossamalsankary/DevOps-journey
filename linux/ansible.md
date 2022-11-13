@@ -4,8 +4,8 @@
 - ##### install httpd package on web1 node using Ansible’s yum module.
 ```diff 
 ---
-- hosts: web1
-  tasks:
+
+
   - name: Install httpd package
     yum: name=httpd state=installed
     
@@ -14,8 +14,8 @@
 
 ```diff 
 ---
-- hosts: web1
-  tasks:
+
+
   - yum:
       name: http://mirror.centos.org/centos/7/os/x86_64/Packages/wget-1.14-18.el7_6.1.x86_64.rpm
       state: present
@@ -27,7 +27,7 @@
 ```diff 
 ---
 - hosts: all
-  tasks:
+
     - name: Install unzip package
       yum:
         name: unzip-5.52
@@ -40,7 +40,7 @@
 
 ---
 - hosts: all
-  tasks:
+
     - name: Install iotop package
       yum:
         name: iotop
@@ -51,8 +51,8 @@
 ```diff 
 
 ---
-- hosts: web1
-  tasks:
+
+
   - yum: name=sudo state=latest
   - yum: name=vsftpd-2.2.2 state=present allow_downgrade=yes
 
@@ -67,7 +67,7 @@
 - name: Start httpd
   hosts: all
   gather_facts: no
-  tasks:
+
     - name: Start httpd service
       service:
         name: httpd
@@ -80,7 +80,7 @@
 ---
 - hosts: all
   gather_facts: no
-  tasks:
+
     - name: Copy Apache welcome file
       copy:
         src: index.html
@@ -99,7 +99,7 @@
 - name: Start httpd
   hosts: all
   gather_facts: no
-  tasks:
+
     - name: Start httpd service
       service:
         name: httpd
@@ -114,7 +114,7 @@
  ---
 - hosts: all
   gather_facts: no
-  tasks:
+
     - name: Make changes in Apache config
       replace:
         path: /etc/httpd/conf/httpd.conf
@@ -135,7 +135,7 @@
  ---
 - hosts: all
   gather_facts: no
-  tasks:
+
     - name: Install nginx
       yum:
         name: nginx
@@ -146,5 +146,124 @@
         name: nginx
         state: started
         enabled: yes
-        
+
   ```
+  - ##### Using an Ansible playbook install firewalld on web1 node, start and enable its service as well. Name the playbook as firewall.yml and keep it under ~/playbooks.
+
+ ```diff 
+  ---
+
+
+   - yum: name=firewalld state=installed
+   - service: name=firewalld state=started
+  
+  ```
+
+  - ##### We have a requirement on web1 node to white list web2 node's IP address 172.20.1.101 in firewall. Create and run a playbook ~/playbooks/whitelist.yml to do so.
+
+```diff 
+---
+
+    
+   - firewalld:
+      source: 172.20.1.101
+      state: enabled
+      zone: internal
+      permanent: yes
+      immediate: yes
+
+``` 
+- ##### We want to block 161/udp port on web1 node permanently. Make a playbook block.yml under ~/playbooks/ directory to do so.
+
+```diff 
+--- 
+
+  - name: Add firewall rule for Apache
+     
+    firewalld:        
+        port: 161/udp
+        zone: block
+        permanent: yes
+        immediate: yes
+        state: enabled
+```
+
+- ##### On web1 node add firewall rule in internal zone to enable https connection from Ansible controller machine and make sure that rule must persist even after system reboot. You can create a playbook https.yml under ~/playbooks/ directory.
+
+```diff 
+---
+
+
+    - name: Enable HTTPS for ansible controller
+      firewalld:
+        source: 172.20.1.2
+        service: https
+        zone: internal
+        state: enabled
+        permanent: yes
+
+    - service:
+        name: firewalld
+        state: reloaded
+
+```
+
+- ###### 
+
+```diff 
+---
+
+
+    - name: Enable HTTPS for ansible controller
+      firewalld:
+        source: 172.20.1.2
+        service: https
+        zone: internal
+        state: enabled
+        permanent: yes
+
+    - service:
+        name: firewalld
+        state: reloaded
+
+```
+
+- ##### A. Add an entry in ~/playbooks/inventory for web2 node, IP address of web2 node is 172.20.1.101 and ssh password and username are same as of web1 (username = root and password = Passw0rd). B. Update web2-config.yml to install httpd before updating its port in config, also start/enable its service. C. Install firewalld package and start/enable its service. D. As now Apache will listen on port 8082 so edit the playbook to add firewall rule in public zone so that Apache can allow all incoming traffic.
+
+```diff
+---
+- hosts: web2
+  tasks:
+    - name: Install pkgs
+      yum:
+        name: httpd, firewalld
+        state: present
+
+    - name: Start/Enable services
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      with_items:
+        - httpd
+        - firewalld
+
+    - name: Change Apache port
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: "Listen 80"
+        replace: "Listen 8082"
+
+    - name: restart Apache
+      service:
+        name: httpd
+        state: restarted
+
+    - name: Add firewall rule for Apache
+      firewalld:
+        port: 8082/tcp
+        zone: public
+        permanent: yes
+        state: enabled
+        immediate: true
+ ```
