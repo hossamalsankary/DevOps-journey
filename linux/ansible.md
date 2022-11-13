@@ -7,9 +7,8 @@
 - ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--filecontent-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
-- ##### [ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS
-](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks)  
-- ##### []()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks)  
+- ##### [LABS – MODULES – USERS AND GROUPS]()  
 - ##### []()  
 
 # ----------------------------------------------------  ^__^ ------------
@@ -517,7 +516,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
         cron_file: ansible_yum
  ```
 
- # LABS – MODULES – USERS AND GROUPS
+ ## LABS – MODULES – USERS AND GROUPS
 
  - ###### Write a playbook create_user.yml to create a user named admin with group: admin and uid: 2048 NOTE: Your playbook must be placed inside folder: /home/thor/playbooks/. Run this playbook for all servers which are listed in /home/thor/playbooks/inventory file.
 
