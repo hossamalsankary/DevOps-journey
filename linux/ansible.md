@@ -4,7 +4,7 @@
  <img src="/images/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
 
 - ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--packages-1)  
-- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-2)  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--filecontent-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
 - ##### []()  
@@ -373,3 +373,146 @@
        format: zip
 
 ```
+- ##### On Ansible controller, we have a zip archive local.zip. We want to extract its contents on web1 under /tmp directory. Create a playbook local.yml under ~/playbooks directory to complete the task.
+
+``` diff 
+---
+- name: extract local.zip to web1
+  hosts: web1
+  tasks:
+  - unarchive:
+      src: local.zip
+      dest: /tmp
+
+```
+
+- ###### On web1 node we have an archive data.tar.gz under /root directory, extract it under /srv directory by developing a playbook ~/playbooks/data.yml and make sure data.tar.gz archive is removed after that.
+
+```diff 
+---
+- name: Extract data.tar.gz on web1
+  hosts: web1
+  tasks:
+  - unarchive:
+      src: /root/data.tar.gz
+      dest: /srv
+      remote_src: yes
+
+  - file: path=/root/data.tar.gz state=absent
+
+
+```
+
+- ###### Create a playbook download.yml under ~/playbooks directory to download and extract the https://github.com/kodekloudhub/Hello-World/archive/master.zip zip archive under /root directory on the web1 node.
+
+```diff 
+---
+- name: Download and extract from URL
+  hosts: web1
+  tasks:
+  -   unarchive:
+       src: https://github.com/kodekloudhub/Hello-World/archive/master.zip
+       dest: /root
+       remote_src: yes
+```
+- ###### We have three files on web1 node /root/file1.txt, /usr/local/share/file2.txt and /var/log/lastlog. Create a bz2 archive of all these files and save it under /root directory, name the archive as files.tar.bz2. You can create ~/playbooks/files.yml playbook for it.
+
+```diff 
+- name: Compress multiple files
+  hosts: web1
+  tasks:
+  - archive:
+     path:
+      - /root/file1.txt
+      - /usr/local/share/file2.txt
+      - /var/log/lastlog
+     dest: /root/files.tar.bz2
+     format: bz2
+
+```
+- ###### We want to setup nginx on web1 node with some sample html code. Create a playbook ~/playbooks/nginx.yml to do so. Below are the details about the task:a. Install nginx package and start/enable its service.b. Extract /root/nginx.zip archive under /usr/share/nginx/html directory.c. Inside /usr/share/nginx/html/index.html replace line This is sample html code with line This is KodeKloud Ansible lab.
+
+```diff 
+
+- name: Install and configure nginx on web1
+  hosts: web1
+  tasks:
+  - name: Install nginx
+    yum: name=nginx state=installed
+  - name: Start nginx
+    service: name=nginx state=started enabled=yes
+
+  - name: Extract nginx.zip
+    unarchive: src=/root/nginx.zip dest=/usr/share/nginx/html remote_src=yes
+
+  - name: Replace line in index.html
+    replace:
+     path: /usr/share/nginx/html/index.html
+     regexp: This is sample html code
+     replace: This is KodeKloud Ansible lab
+```
+
+## ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS
+
+- ###### Create a playbook ~/playbooks/lastlog.yml to add a cron job Clear Lastlog on node00 to empty the /var/log/lastlog logs file. The job must run at 12am everyday.You can use the command echo “” > /var/log/lastlog to empty the lastlog file and schedule should be 0 0 * * *.
+
+```diff 
+---
+- name: Create a cron job to clear last log
+  hosts: node00
+  tasks:
+   - name: Create cron job
+     cron:
+       name: "Clear Lastlog"
+       minute: "0"
+       hour: "0"
+       job: echo "" > /var/log/lastlog
+```
+
+- ##### We have a script /root/free.sh on node00 that is used to check the free system memory. We would like to create a cron Free Memory Check to execute this script after every 2 hour (i.e 12am, 2am, 4am etc), the command to execute the script is sh /root/free.sh and schedule should be 0 */2 * * *.You can create a playbook ~/playbooks/script_cron.yml for this.
+
+```diff 
+---
+- name: Create a cron job to run free.sh script
+  hosts: node00
+  tasks:
+   - name: Create cron job
+     cron:
+       name: "Free Memory Check"
+       minute: "0"
+       hour: "*/2"
+       job: "sh /root/free.sh"
+```
+
+- #### Due to some disk space limitations, we want to cleanup the /tmp location on node00 host after every reboot. Create a playbook ~/playbooks/reboot.yml to add a cron named cleanup on node00 that will execute after every reboot and will clean /tmp location.The command should be rm -rf /tmp/*.
+
+```diff 
+---
+- name: Cleanup /tmp after every reboot
+  hosts: node00
+  tasks:
+   - cron:
+      name: cleanup
+      job: rm -rf /tmp/*
+      special_time: reboot
+
+```
+- ###### On node00 we want to keep the installed packages up to date, so we would like to run yum updates regularly. Create a playbook ~/playbooks/yum_update.yml and create a cron job as described below:a. Do not add cron directly using crontab instead create a cron file /etc/cron.d/ansible_yum.b. The cron must run on every Sunday at 8:05 am.c. The name of the cron must be yum update.d. Cron should be added for user rootUse command yum -y update
+
+```diff
+---
+- name: Create cron for yum
+  hosts: node00
+  gather_facts: no
+  tasks:
+    - name: Creates a cron
+      cron:
+        name: yum update
+        weekday: 0
+        minute: 5
+        hour: 8
+        user: root
+        job: "yum -y update"
+        cron_file: ansible_yum
+ ```
+ 
