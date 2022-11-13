@@ -1,7 +1,7 @@
 
 
 # ANSIBLE MODULES
- <img src="/images/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
+ <img src="/images/ansible.png" alt="Permissions" width="200" align="right" />
 
 - ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--packages-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-1)  
@@ -9,13 +9,11 @@
 - ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks)  
 - ##### [LABS – MODULES – USERS AND GROUPS](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#labs--modules--users-and-groups-1)  
-- ##### [pro]()  
-
-# ----------------------------------------------------  ^__^ ------------
+- ##### [ANSIBLE MODULES, PROJECT – PLAYBOOK](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-project--playbook)  
 
 ## ANSIBLE MODULES, LABS – MODULES – PACKAGES
 
-- ##### install httpd package on web1 node using Ansible’s yum module.
+- ###### install httpd package on web1 node using Ansible’s yum module.
 ```diff 
 ---
 
@@ -24,7 +22,7 @@
     yum: name=httpd state=installed
     
 ```
-- ##### We have an rpm available for wget package on URL http://mirror.centos.org/centos/7/os/x86_64/Packages/wget-1.14-18.el7_6.1.x86_64.rpm. Create a playbook with name wget.yml under ~/playbooks to install that rpm on web1 node using yum module.
+- ###### We have an rpm available for wget package on URL http://mirror.centos.org/centos/7/os/x86_64/Packages/wget-1.14-18.el7_6.1.x86_64.rpm. Create a playbook with name wget.yml under ~/playbooks to install that rpm on web1 node using yum module.
 
 ```diff 
 ---
@@ -36,7 +34,7 @@
 
 ```
 
-- ##### nstall unzip package on web1 node. We want to install unzip-5.52 version of this package so before running the playbook make the required changes.
+- ###### nstall unzip package on web1 node. We want to install unzip-5.52 version of this package so before running the playbook make the required changes.
 
 ```diff 
 ---
@@ -48,7 +46,7 @@
         state: present
 
 ```
-- #####  to install the latest version of iotop package keeps failing. Please fix the issue so that playbook can work.
+- ###### to install the latest version of iotop package keeps failing. Please fix the issue so that playbook can work.
 
 ```diff 
 
@@ -60,7 +58,7 @@
         name: iotop
         state: latest
 ```
-- ##### We want to install some more packages on web1 node. Create a playbook ~/playbooks/multi-pkgs.yml to install the latest version of sudo package, moreover we already have vsftpd v3.0.2 installed but due to some compatibility issues we want to install vsftpd v2.2.2 so add a task in same playbook to do so.
+- ###### We want to install some more packages on web1 node. Create a playbook ~/playbooks/multi-pkgs.yml to install the latest version of sudo package, moreover we already have vsftpd v3.0.2 installed but due to some compatibility issues we want to install vsftpd v2.2.2 so add a task in same playbook to do so.
 
 ```diff 
 
@@ -74,7 +72,7 @@
 
 ## ANSIBLE MODULES, LABS – MODULES – SERVICES
 
-- ##### make sure httpd service is started on web1 node. You can use
+- ###### make sure httpd service is started on web1 node. You can use
 
 ```diff 
 ---
@@ -88,7 +86,7 @@
         state: started
 https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks
 ```
-- ##### We have a playbook ~/playbooks/file.yml to copy a file with a welcome message under httpd server's document root on web1 node. Make changes in the playbook so that httpd server reloads after copying the file, make sure it does not restart the httpd server.
+- ###### We have a playbook ~/playbooks/file.yml to copy a file with a welcome message under httpd server's document root on web1 node. Make changes in the playbook so that httpd server reloads after copying the file, make sure it does not restart the httpd server.
 
 ```diff 
 ---
@@ -105,7 +103,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
 
 ```
 
-- ##### We would like the httpd service on web1 node to always start automatically after the system reboots. Update the httpd.yml playbook you created earlier with the required changes.
+- ###### We would like the httpd service on web1 node to always start automatically after the system reboots. Update the httpd.yml playbook you created earlier with the required changes.
 
 
 ```diff
@@ -122,7 +120,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
 
  ```
  
- - ##### We created a playbook ~/playbooks/config.yml to enable port 443 for httpd on web1 node as we want to run nginx on the default port 80 so port 80 needs to be free. Make changes in the playbook so that httpd service restarts after making these change.
+ - ###### We created a playbook ~/playbooks/config.yml to enable port 443 for httpd on web1 node as we want to run nginx on the default port 80 so port 80 needs to be free. Make changes in the playbook so that httpd service restarts after making these change.
 
  ```diff 
  ---
@@ -142,7 +140,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
  
  ```
 
- - ##### Create a playbook ~/playbooks/nginx.yml to install nginx on web1 node and make sure nginx service is started and should always start even after the system reboots.
+ - ###### Create a playbook ~/playbooks/nginx.yml to install nginx on web1 node and make sure nginx service is started and should always start even after the system reboots.
 
  ``` diff
  
@@ -162,7 +160,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
         enabled: yes
 
   ```
-  - ##### Using an Ansible playbook install firewalld on web1 node, start and enable its service as well. Name the playbook as firewall.yml and keep it under ~/playbooks.
+  - ###### Using an Ansible playbook install firewalld on web1 node, start and enable its service as well. Name the playbook as firewall.yml and keep it under ~/playbooks.
 
  ```diff 
   ---
@@ -173,7 +171,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
   
   ```
 
-  - ##### We have a requirement on web1 node to white list web2 node's IP address 172.20.1.101 in firewall. Create and run a playbook ~/playbooks/whitelist.yml to do so.
+  - ###### We have a requirement on web1 node to white list web2 node's IP address 172.20.1.101 in firewall. Create and run a playbook ~/playbooks/whitelist.yml to do so.
 
 ```diff 
 ---
@@ -187,7 +185,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
       immediate: yes
 
 ``` 
-- ##### We want to block 161/udp port on web1 node permanently. Make a playbook block.yml under ~/playbooks/ directory to do so.
+- ###### We want to block 161/udp port on web1 node permanently. Make a playbook block.yml under ~/playbooks/ directory to do so.
 
 ```diff 
 --- 
@@ -202,7 +200,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
         state: enabled
 ```
 
-- ##### On web1 node add firewall rule in internal zone to enable https connection from Ansible controller machine and make sure that rule must persist even after system reboot. You can create a playbook https.yml under ~/playbooks/ directory.
+- ###### On web1 node add firewall rule in internal zone to enable https connection from Ansible controller machine and make sure that rule must persist even after system reboot. You can create a playbook https.yml under ~/playbooks/ directory.
 
 ```diff 
 ---
@@ -222,7 +220,6 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
 
 ```
 
-- ###### 
 
 ```diff 
 ---
@@ -242,7 +239,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
 
 ```
 
-- ##### A. Add an entry in ~/playbooks/inventory for web2 node, IP address of web2 node is 172.20.1.101 and ssh password and username are same as of web1 (username = root and password = Passw0rd). B. Update web2-config.yml to install httpd before updating its port in config, also start/enable its service. C. Install firewalld package and start/enable its service. D. As now Apache will listen on port 8082 so edit the playbook to add firewall rule in public zone so that Apache can allow all incoming traffic.
+- ###### A. Add an entry in ~/playbooks/inventory for web2 node, IP address of web2 node is 172.20.1.101 and ssh password and username are same as of web1 (username = root and password = Passw0rd). B. Update web2-config.yml to install httpd before updating its port in config, also start/enable its service. C. Install firewalld package and start/enable its service. D. As now Apache will listen on port 8082 so edit the playbook to add firewall rule in public zone so that Apache can allow all incoming traffic.
 
 ```diff
 ---
@@ -284,7 +281,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
 
  ## ANSIBLE MODULES, LABS – MODULES – FILECONTENT
 
-- ##### Create a playbook ~/playbooks/perm.yml to create a blank file /opt/data/perm.txt with 0640 permissions on web1 node.
+- ###### Create a playbook ~/playbooks/perm.yml to create a blank file /opt/data/perm.txt with 0640 permissions on web1 node.
 
 ```diff 
 ---
@@ -295,7 +292,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
      file: path=/opt/data/perm.txt mode=0640 state=touch
 ```
 
-- ##### Using a playbook ~/playbooks/index1.yml create /var/www/html/index.html file on web1 node with content This line was added using Ansible lineinfile module!.
+- ###### Using a playbook ~/playbooks/index1.yml create /var/www/html/index.html file on web1 node with content This line was added using Ansible lineinfile module!.
 
 ```diff 
 ---
@@ -307,7 +304,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
       line: 'This line was added using Ansible lineinfile module!'
       create: yes
 ```
-- ##### We have a playbook ~/playbooks/find.yml that recursively finds files in /opt/data directory older than 2 minutes and equal or greater than 1 megabyte in size. It also copies those files under /opt directory. However it has some missing parameters so its not working as expected, take a look into it and make appropriate changes.
+- ###### We have a playbook ~/playbooks/find.yml that recursively finds files in /opt/data directory older than 2 minutes and equal or greater than 1 megabyte in size. It also copies those files under /opt directory. However it has some missing parameters so its not working as expected, take a look into it and make appropriate changes.
 
 
 ```diff 
@@ -373,7 +370,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
        format: zip
 
 ```
-- ##### On Ansible controller, we have a zip archive local.zip. We want to extract its contents on web1 under /tmp directory. Create a playbook local.yml under ~/playbooks directory to complete the task.
+- ###### On Ansible controller, we have a zip archive local.zip. We want to extract its contents on web1 under /tmp directory. Create a playbook local.yml under ~/playbooks directory to complete the task.
 
 ``` diff 
 ---
@@ -469,7 +466,7 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
        job: echo "" > /var/log/lastlog
 ```
 
-- ##### We have a script /root/free.sh on node00 that is used to check the free system memory. We would like to create a cron Free Memory Check to execute this script after every 2 hour (i.e 12am, 2am, 4am etc), the command to execute the script is sh /root/free.sh and schedule should be 0 */2 * * *.You can create a playbook ~/playbooks/script_cron.yml for this.
+- ###### We have a script /root/free.sh on node00 that is used to check the free system memory. We would like to create a cron Free Memory Check to execute this script after every 2 hour (i.e 12am, 2am, 4am etc), the command to execute the script is sh /root/free.sh and schedule should be 0 */2 * * *.You can create a playbook ~/playbooks/script_cron.yml for this.
 
 ```diff 
 ---
