@@ -267,3 +267,95 @@
         state: enabled
         immediate: true
  ```
+
+ ## ANSIBLE MODULES, LABS – MODULES – FILECONTENT
+
+- ##### Create a playbook ~/playbooks/perm.yml to create a blank file /opt/data/perm.txt with 0640 permissions on web1 node.
+
+```diff 
+---
+- name: Create file perm.txt
+  hosts: web1
+  tasks:
+   - name: Create file perm.txt
+     file: path=/opt/data/perm.txt mode=0640 state=touch
+```
+
+- ##### Using a playbook ~/playbooks/index1.yml create /var/www/html/index.html file on web1 node with content This line was added using Ansible lineinfile module!.
+
+```diff 
+---
+- name: Create index.html on web1
+  hosts: web1
+  tasks:
+  - lineinfile:
+      path: /var/www/html/index.html
+      line: 'This line was added using Ansible lineinfile module!'
+      create: yes
+```
+- ##### We have a playbook ~/playbooks/find.yml that recursively finds files in /opt/data directory older than 2 minutes and equal or greater than 1 megabyte in size. It also copies those files under /opt directory. However it has some missing parameters so its not working as expected, take a look into it and make appropriate changes.
+
+
+```diff 
+---
+- hosts: web1
+  tasks:
+    - name: Find files
+      find:
+        paths: /opt/data
+        age: 2m
+        size: 1m
+        recurse: yes
+      register: file
+
+    - name: Copy files
+      command: "cp {{ item.path }} /opt"
+      with_items: "{{ file.files }}"
+
+```
+
+- ###### In /var/www/html/index.html file on web1 node add some additional content using blockinfile module. Below is the content:Welcome to KodeKloudb This is Ansible Lab. Make sure user owner and group owner of the file is apache, also make sure the block is added at beginning of the file. Create a new playbook for this ~/playbooks/index2.yml
+
+```diff 
+---
+- name: Add block to index.html
+  hosts: web1
+  tasks:
+   - blockinfile:
+      owner: apache
+      group: apache
+      insertbefore: BOF
+      path: /var/www/html/index.html
+      block: |
+       Welcome to KodeKloud!
+       This is Ansible Lab.
+```
+
+- ###### On web1 node we want to run our httpd server on port 8080. Create a playbook ~/playbooks/httpd.yml to change port 80 to 8080 in /etc/httpd/conf/httpd.conf file using replace module. Also make sure Ansible restarts httpd service after making the change.Listen 80 is the parameter that need to be changed in /etc/httpd/conf/httpd.conf
+
+```diff 
+---
+- name: replace port 80 to 8080
+  hosts: web1
+  tasks:
+  - replace:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: 'Listen 80'
+      replace: 'Listen 8080'
+  - service: name=httpd state=restarted
+```
+
+## ANSIBLE MODULES, LABS – MODULES – ARCHIVING
+- ##### Create an inventory file under ~/playbooks directory on Ansible controller host and add web1 as managed node. IP address of the web1 node is 172.20.1.100, SSH user is root and password is Passw0rd.Create a playbook ~/playbooks/zip.yml to make a zip archive opt.zip of /opt directory on web1 node and save it under /root directory on web1 node itself.
+
+```diff 
+---
+- name: Zip archive opt.zip
+  hosts: web1
+  tasks:
+   - archive:
+       path: /opt
+       dest: /root/opt.zip
+       format: zip
+       
+```
