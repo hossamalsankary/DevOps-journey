@@ -1,6 +1,6 @@
 # DevOps journey
 
-###### hello there, I am hossam DevOps engineer   this repo for writes down all my notes in DevOps  it I promise to give all my best I have and you will get a lot of useful information in  here have fun ^_^ 
+###### hello there, I am hossam DevOps engineer   this repo for writes down all my notes in DevOps 
 
 ## basics
 
@@ -10,6 +10,7 @@
 - [✔️] ☸️  3  > [Kubernetes](linux/kubernetes.md)
 
 - [✔️] ☸️  4  > [Git](linux/git.md)
+<<<<<<< HEAD
 
 ## Labs
 
@@ -19,3 +20,5 @@
 - [✔️] ☸️  3  > [Kubernetes](linux/kubernetes.md)
 
 - [✔️] ☸️  4  > [Git](linux/git.md)
+=======
+>>>>>>> 83d4b78e777e27572d46427304ce5f876eabb558
