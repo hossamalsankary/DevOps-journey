@@ -1,6 +1,6 @@
 
 
-# Content 
+# ANSIBLE MODULES
  <img src="/images/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
 
 - ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--packages-1)  
@@ -515,4 +515,49 @@
         job: "yum -y update"
         cron_file: ansible_yum
  ```
+
+ - ###### Write a playbook create_user.yml to create a user named admin with group: admin and uid: 2048 NOTE: Your playbook must be placed inside folder: /home/thor/playbooks/. Run this playbook for all servers which are listed in /home/thor/playbooks/inventory file.
+
+ ```diff 
+ ---
+
+- hosts: all
+  gather_facts: no
+  tasks:
+    - group:
+        name: 'admin'
+        state: present
+    - user:
+        name: 'admin'
+        uid: 2048
+        group: 'admin'
  
+ ```
+ - ###### Suppose Sabin Nepal joined your team on the first day of 2020 as a special contractor to work for a span of 3 years, ie, till the end of the year 2023. He needs his accounts on the remote hosts till his work span.Write a playbook add_user.yml to create his user account with username neymarsabin that would be expiring after 3 years. The expires option on the users module is in the epoch. So Sunday, December 31, 2023 11:59:59 PM GMT== 1704067199 as epoch timeRemember: your playbook must be placed inside /home/thor/playbooks and use inventory file there.
+
+ ```diff 
+ ---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - user:
+        name: 'neymarsabin'
+        expires: 1704067199
+ 
+ ```
+
+ - ###### The admin user you created earlier got compromised for some reason, and you need to remove it asap from the system.Write a playbook remove_user.yml to remove the admin account created earlier.Remember, your playbook must be placed inside /home/thor/playbooks and use inventory file there.
+
+ ```diff 
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - user:
+        name: 'admin'
+        state: absent
+    - group:
+        name: 'admin'
+        state: absent
+ 
+ ```
