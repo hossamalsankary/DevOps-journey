@@ -8,8 +8,8 @@
 - ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--filecontent-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--archiving-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – SCHEDULED TASKS](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--scheduled-tasks)  
-- ##### [LABS – MODULES – USERS AND GROUPS]()  
-- ##### []()  
+- ##### [LABS – MODULES – USERS AND GROUPS](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#labs--modules--users-and-groups-1)  
+- ##### [pro]()  
 
 # ----------------------------------------------------  ^__^ ------------
 
@@ -562,4 +562,319 @@ https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#a
         name: 'admin'
         state: absent
  
+ ```
+
+## ANSIBLE MODULES, PROJECT – PLAYBOOK
+
+- ###### Let us continue to improve our LAMP stack E-Commerce application. Now that we have learned to develop playbooks and various modules, let's further develop our playbooks to install packages and configure applications.Let us start with the first step of installing common dependencies on both the servers. We need the following packages installed on both web and db servers ibselinux-python libsemanage-python firewalld.
+
+
+```diff
+---
+- name: Deploy lamp stack application
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install common dependencies
+      yum:
+        name:
+          - libselinux-python
+          - libsemanage-python
+          - firewalld
+        state: installed
+
+ ```
+
+- ###### Let us now configure MariaDB Service on the lamp-db server. Update the playbook to add a play to perform the following tasks on lamp-db1. Install the following packages: mariadb-serverMySQL-python 2. Copy the MySQL Configuration file located at files/my.cnf to /etc/my.cnf 3. Start and enable the mariadb Service 4. Start and enable the firewalld Service 5. Insert firewalld rule Allow mysql_port - 3306/tcp zone - public
+
+
+```diff
+-- inventory file
+lamp-db ansible_host=172.20.1.101 ansible_ssh_private_key_file=/home/thor/.ssh/maria ansible_user=maria mysqlservice=mysqld mysql_port=3306 dbname=ecomdb dbuser=ecomuser dbpassword=ecompassword
+
+[web_servers]
+lampweb ansible_host=172.20.1.100 ansible_ssh_private_key_file=/home/thor/.ssh/john ansible_user=john httpd_port=80 repository=https://github.com/kodekloudhub/learning-app-ecommerce.git
+ 
+-- -------------------------------------------------------------
+---
+
+- name: Deploy lamp stack application
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install common dependencies
+      yum:
+        name:
+          - libselinux-python
+          - libsemanage-python
+          - firewalld
+        state: installed
+
+    # Install and Configure Database
+- name: Deploy lamp stack application
+  hosts: lamp-db
+  become: yes
+  tasks:
+    - name: Install MariaDB package
+      yum:
+        name:
+          - mariadb-server
+          - MySQL-python
+        state: installed
+
+    - name: Create Mysql configuration file
+      copy: src=files/my.cnf dest=/etc/my.cnf
+
+    - name: Start MariaDB Service
+      service: name=mariadb state=started enabled=yes
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule
+      firewalld: port={{ mysql_port }}/tcp permanent=true state=enabled immediate=yes
+
+
+ ```
+
+- ###### Let us now configure MariaDB Database and add some inventory data for our e-commerce store. Update the playbook to add a play to perform the following tasks on lamp-db1. Create Application Database Use the dbname variable from inventory as the name of the database 2. Create Application Database User Use inventory variables dbuser dbpassword from inventory. host should be set to IP address of web server 172.20.1.100 priv should be set to *.*:ALL 3. Copy db-load-script.sql file to /tmp directory on the database server 4. Load Inventory data by running the below shell command on the database server mysql -f < /tmp/db-load-script.sql Playbook: ~/playbooks/lamp-stack-playbooks/deploy-lamp-stack.yml
+
+
+```diff
+
+---
+
+- name: Deploy lamp stack application
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install common dependencies
+      yum:
+        name:
+          - libselinux-python
+          - libsemanage-python
+          - firewalld
+        state: installed
+
+    # Install and Configure Database
+- name: Deploy lamp stack application
+  hosts: lamp-db
+  become: yes
+  tasks:
+    - name: Install MariaDB package
+      yum:
+        name:
+          - mariadb-server
+          - MySQL-python
+        state: installed
+
+    - name: Create Mysql configuration file
+      copy: src=files/my.cnf dest=/etc/my.cnf
+
+    - name: Start MariaDB Service
+      service: name=mariadb state=started enabled=yes
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule
+      firewalld: port={{ mysql_port }}/tcp permanent=true state=enabled immediate=yes
+
+    - name: Create Application Database
+      mysql_db: name={{ dbname }} state=present
+
+    - name: Create Application DB User
+      mysql_user: name={{ dbuser }} password={{ dbpassword }} priv=*.*:ALL host='172.20.1.100' state=present
+
+    - name: Move db-load-script to db host
+      copy:
+        src: files/db-load-script.sql
+        dest: /tmp/db-load-script.sql
+
+    - name: Load Inventory Data
+      shell: mysql -f < /tmp/db-load-script.sql
+ ```
+
+- ###### We now proceed to Installing web service on the web server. 1. Install Web Server Install httpd, php and php-mysql packages 2. Install Git to download source code package: git 3. Start and enable the firewalld service 4. Insert firewalld rule for httpd For port use httpd_port/tcp variable. 4. Set index.php as the default page Modify line "DirectoryIndex index.html" to "DirectoryIndex index.php" in file /etc/httpd/conf/httpd.conf 5. Start and enable the httpd service
+
+```diff
+---
+
+- name: Deploy lamp stack application
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install common dependencies
+      yum:
+        name:
+          - libselinux-python
+          - libsemanage-python
+          - firewalld
+        state: installed
+
+    # Install and Configure Database
+- name: Deploy lamp stack application
+  hosts: lamp-db
+  become: yes
+  tasks:
+    - name: Install MariaDB package
+      yum:
+        name:
+          - mariadb-server
+          - MySQL-python
+        state: installed
+
+    - name: Create Mysql configuration file
+      copy: src=files/my.cnf dest=/etc/my.cnf
+
+    - name: Start MariaDB Service
+      service: name=mariadb state=started enabled=yes
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule
+      firewalld: port={{ mysql_port }}/tcp permanent=true state=enabled immediate=yes
+
+    - name: Create Application Database
+      mysql_db: name={{ dbname }} state=present
+
+    - name: Create Application DB User
+      mysql_user: name={{ dbuser }} password={{ dbpassword }} priv=*.*:ALL host='172.20.1.100' state=present
+
+    - name: Move db-load-script to db host
+      copy:
+        src: files/db-load-script.sql
+        dest: /tmp/db-load-script.sql
+
+    - name: Load Inventory Data
+      shell: mysql -f < /tmp/db-load-script.sql
+
+- name: Deploy lamp stack application
+  hosts: lampweb
+  become: yes
+  tasks:
+    - name: Install httpd and php
+      yum:
+        name:
+          - httpd
+          - php
+          - php-mysql
+        state: present
+
+    - name: Install web role specific dependencies
+      yum: name=git state=installed
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule for httpd
+      firewalld: port={{ httpd_port }}/tcp permanent=true state=enabled immediate=yes
+
+    - name: Set index.php as the default page
+      tags: "Set index.php as the default page"
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: 'DirectoryIndex index.html'
+        replace: 'DirectoryIndex index.php'
+
+    - name: http service state
+      service: name=httpd state=started enabled=yes
+
+
+
+ ```
+
+- ###### Finally, let us download the latest source code of our web application and upload the index.php file. 1. Clone the source code from the repository The address of the URL is given in the inventory file. Use the right variable. Clone it to /var/www/html/ 2. Copy the custom index.php file from files/index.php to /var/www/html/index.php
+
+```diff
+---
+
+- name: Deploy lamp stack application
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install common dependencies
+      yum:
+        name:
+          - libselinux-python
+          - libsemanage-python
+          - firewalld
+        state: installed
+
+    # Install and Configure Database
+- name: Deploy lamp stack application
+  hosts: lamp-db
+  become: yes
+  tasks:
+    - name: Install MariaDB package
+      yum:
+        name:
+          - mariadb-server
+          - MySQL-python
+        state: installed
+
+    - name: Create Mysql configuration file
+      copy: src=files/my.cnf dest=/etc/my.cnf
+
+    - name: Start MariaDB Service
+      service: name=mariadb state=started enabled=yes
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule
+      firewalld: port={{ mysql_port }}/tcp permanent=true state=enabled immediate=yes
+
+    - name: Create Application Database
+      mysql_db: name={{ dbname }} state=present
+
+    - name: Create Application DB User
+      mysql_user: name={{ dbuser }} password={{ dbpassword }} priv=*.*:ALL host='172.20.1.100' state=present
+
+    - name: Move db-load-script to db host
+      copy:
+        src: files/db-load-script.sql
+        dest: /tmp/db-load-script.sql
+
+    - name: Load Inventory Data
+      shell: mysql -f < /tmp/db-load-script.sql
+
+- name: Deploy lamp stack application
+  hosts: lampweb
+  become: yes
+  tasks:
+    - name: Install httpd and php
+      yum:
+        name:
+          - httpd
+          - php
+          - php-mysql
+        state: present
+
+    - name: Install web role specific dependencies
+      yum: name=git state=installed
+
+    - name: Start firewalld
+      service: name=firewalld state=started enabled=yes
+
+    - name: insert firewalld rule for httpd
+      firewalld: port={{ httpd_port }}/tcp permanent=true state=enabled immediate=yes
+
+    - name: Set index.php as the default page
+      tags: "Set index.php as the default page"
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: 'DirectoryIndex index.html'
+        replace: 'DirectoryIndex index.php'
+
+    - name: http service state
+      service: name=httpd state=started enabled=yes
+
+    - name: Copy the code from repository
+      git: repo={{ repository }} dest=/var/www/html/  force=yes
+
+    - name: Creates the index.php file
+      copy: src=files/index.php dest=/var/www/html/index.php
+
  ```
