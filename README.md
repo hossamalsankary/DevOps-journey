@@ -10,15 +10,8 @@
 - [✔️] ☸️  3  > [Kubernetes](linux/kubernetes.md)
 
 - [✔️] ☸️  4  > [Git](linux/git.md)
-<<<<<<< HEAD
 
 ## Labs
 
-- [✔️] 🐧 1  > [Ansibl](linux/ansible.md)
-- [✔️] 🐧 2  > [ Advance Linux topics ](linux/advance_linux.md)
+- [✔️] ☸️ 1  > [Ansibl](linux/ansible.md)
 
-- [✔️] ☸️  3  > [Kubernetes](linux/kubernetes.md)
-
-- [✔️] ☸️  4  > [Git](linux/git.md)
-=======
->>>>>>> 83d4b78e777e27572d46427304ce5f876eabb558

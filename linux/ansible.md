@@ -1,7 +1,7 @@
 
 
 # ANSIBLE MODULES
- <img src="/images/ansible.png" alt="Permissions" width="200" align="right" />
+ <img src="/images/ansible.png" alt="Permissions" width="300" align="right" />
 
 - ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--packages-1)  
 - ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES](https://github.com/hossamalsankary/Notes-for-devops/blob/main/linux/ansible.md#ansible-modules-labs--modules--services-1)  
