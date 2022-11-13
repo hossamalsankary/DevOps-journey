@@ -1,4 +1,19 @@
 
+
+# Content 
+ <img src="/ansiblebg.jpg" alt="Permissions" width="200" align="right" />
+
+- ##### [ANSIBLE MODULES, LABS – MODULES – PACKAGES]()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES]()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – SERVICES]()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – FILECONTENT]()  
+- ##### [ANSIBLE MODULES, LABS – MODULES – ARCHIVING]()  
+- ##### []()  
+- ##### []()  
+- ##### []()  
+
+# ----------------------------------------------------  ^__^ ------------
+
 ## ANSIBLE MODULES, LABS – MODULES – PACKAGES
 
 - ##### install httpd package on web1 node using Ansible’s yum module.
@@ -357,5 +372,5 @@
        path: /opt
        dest: /root/opt.zip
        format: zip
-       
+
 ```
