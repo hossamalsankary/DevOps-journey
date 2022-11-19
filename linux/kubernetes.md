@@ -496,10 +496,20 @@ Both the above commands have their own challenges. While one of it cannot accept
 ```diff
 -- run redis pod with lable tier=db
 kubectl run redis -l tier=db --image=redis:alpine 
+
 -- Create a service redis-service to expose the redis application within the cluster on port 6379.Use imperative commands.@@
  kubectl expose pod redis --name=redis-service --port=6379 
 
+-- Create a new pod called custom-nginx using the nginx image and expose it on container port 8080.
+kubectl run custom-nginx  --image=nginx --port=8080
 
+
+-- crate namespace calld hossam
+kubectl create namespace hossam
+
+-- Create a new deployment called redis-deploy in the hossam namespace with the redis image. It should have 2 replicas.
+
+kubectl create deployment redis-deployment-in-hossam-namespace --image=redis --replicas=2 --namespace=hossam
  ```
  
 
