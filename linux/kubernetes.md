@@ -515,6 +515,8 @@ kubectl create deployment redis-deployment-in-hossam-namespace --image=redis --r
 -- run nginx pod port 80 and expose it with service 
 
 kubectl run nginx --image=nginx --port=80 --namespace=default --expose
+
+
  ```
  
 
