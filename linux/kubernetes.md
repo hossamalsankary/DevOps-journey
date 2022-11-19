@@ -9,7 +9,7 @@
 
 - #### [Kubernetes Service](https://github.com/hossamalsankary/DevOps-journey/blob/main/linux/kubernetes.md#kubernetes-service-1)
 
-
+- #### [Certification Tip – Imperative Commands!]()
 
 ### -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -461,8 +461,6 @@ kubectl scale deployment nginx --replicas=4
 
 kubectl create deployment nginx --image=nginx--dry-run=client -o yaml > nginx-deployment.yaml
  ```
-
-
 
 ## Service
 
