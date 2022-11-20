@@ -527,9 +527,6 @@ kubectl run nginx --image=nginx --port=80 --namespace=default --expose
 
  # Update the environment variable on the POD to use the newly created ConfigMapNote: Delete and recreate the POD. Only make the necessary changes. Do not modify the name of the Pod.
 
-
-
- ---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -544,5 +541,16 @@ spec:
          name: webapp-config-map
     image: kodekloud/webapp-color
     name: webapp-color
+
+```
+
+## secret 
+
+```diff 
+## The reason the application is failed is because we have not created the secrets yet. Create a new secret named db-secret with the data given below.You may follow any one of the methods discussed in lecture to create the secret.
+
+
+kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
+
 
 ```
