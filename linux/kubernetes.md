@@ -519,4 +519,30 @@ kubectl run nginx --image=nginx --port=80 --namespace=default --expose
 
  ```
  
+## Configmap 
+``diff 
+# Create a new ConfigMap for the webapp-color POD. Use the spec given below.
+ 
+ kubectl create configmap webapp-config-map --from-literal=APP_COLOR=darkblue --dy-run=client -o yaml
 
+ # Update the environment variable on the POD to use the newly created ConfigMapNote: Delete and recreate the POD. Only make the necessary changes. Do not modify the name of the Pod.
+
+
+
+ ---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: webapp-color
+  name: webapp-color
+  namespace: default
+spec:
+  containers:
+  - envFrom:
+    - configMapRef:
+         name: webapp-config-map
+    image: kodekloud/webapp-color
+    name: webapp-color
+
+```
