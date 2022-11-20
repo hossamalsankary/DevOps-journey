@@ -600,3 +600,33 @@ spec:
                             # and include a key named "password"
   restartPolicy: Never
 ```
+
+# recap Security in Docker
+```diff 
+#linux capability
++ /usr/include/linux/capability.h
+
+# By default Docker runs a container with a limited set of capabilities. And so the
+#processes running within the container do not have the privileges to say, reboot the
+#host or perform operations that can disrupt the host or other containers running on
+#the same host. In case you wish to override this behavior and enable all privileges to
+#the container use the privileged flag
+
+
+# If you wish to override this behavior and provide additional privileges than what is
+# available use the cap-add option in the docker run command
+
+docker run --cap-add MAC_ADMIN
+
+#Or in case you wish to run the container with all privileges enabled, use the privileged flag. Well that’s it on Docker Security for now. I will see you in the next lecture.
+docker run --privileged ubuntu 
+
+```
+
+# Kubernetes Security Contexts
+
+``diff 
+
+
+
+```
