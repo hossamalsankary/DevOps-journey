@@ -628,5 +628,51 @@ docker run --privileged ubuntu
 ``diff 
 
 
+# example 
+# Let us start with a POD definition file. This pod runs an ubuntu image with the sleep command. To configure security context on the container, add a field called securityContext under the spec section of the pod. Use the runAsUser option to set the user ID for the POD.
 
-```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+spec:
+containers:
+  - name: ubuntu
+      image: ubuntu
+      command: ["sleep", "3600"]
+    securityContext:
+    runAsUser: 1000
+      capabilities:
+        add: ["MAC_ADMIN"]
+
+#To set the same configuration on the container level, move the whole section under
+the container specification like this.
+To add capabilities use the capabilities option and specify a list of capabilities to add
+to the POD.
+Well that’s all on Security Contexts. Head over to the coding exercises section and
+practice viewing, configuring and troubleshooting issues related to Security contexts
+in Kubernetes. That’s it for now and I will see you in the next lecture.
+ ```       
+
+ ```diff 
+ 
+ apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod
+spec:
+  securityContext:
+    runAsUser: 1001  # in the pod level will over the container laver
+  containers:
+  -  image: ubuntu
+     name: web
+     command: ["sleep", "5000"]
+     securityContext:
+      runAsUser: 1002
+      capabilities:  # give premation for the user to do some  capabilities to the pod 
+        add: ["SYS_TIME"]
+  -  image: ubuntu
+     name: sidecar
+     command: ["sleep", "5000"]
+
+ ```
