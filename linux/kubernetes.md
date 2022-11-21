@@ -625,7 +625,7 @@ docker run --privileged ubuntu
 
 # Kubernetes Security Contexts
 
-``diff 
+```diff 
 
 
 # example 
