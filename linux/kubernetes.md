@@ -727,3 +727,9 @@ spec:
           protocol: TCP
 
 ```
+## Taints and Tolerations
+-  Create a taint on node01 with key of spray, value of mortein and effect of NoSchedule
+```diff 
+kubectl taint nodes node01 spray=mortein:NoSchedule
+
+```
