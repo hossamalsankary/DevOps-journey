@@ -926,6 +926,8 @@ spec:
 - how to exc inside pod 
 ```diff 
 -- kubectl -n elastic-stack exec -it app -- cat /log/app.log
+
+-- kubectl exec --namespace=kube-public curl -- sh -c 
 ```
 
 - Edit the pod to add a sidecar container to send logs to Elastic Search. Mount the log volume to the sidecar container.Only add a new container. Do not modify anything else. Use the spec provided below.Note: State persistence concepts are discussed in detail later in this course. For now please make use of the below documentation link for updating the concerning pod.https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/
@@ -1003,3 +1005,139 @@ spec:
     command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
 
 ```
+## readinessProbe
+- Update the newly created pod 'simple-webapp-2' with a readinessProbe using the given specSpec is given on the below. Do not modify any other properties of the pod.
+Pod Name: simple-webapp-2
+Image Name: kodekloud/webapp-delayed-start
+Readiness Probe: httpGet
+Http Probe: /ready
+Http Port: 8080
+
+```diff
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2021-08-01T04:55:35Z"
+  labels:
+    name: simple-webapp
+  name: simple-webapp-2
+  namespace: default
+spec:
+  containers:
+  - env:
+    - name: APP_START_DELAY
+      value: "80"
+    image: kodekloud/webapp-delayed-start
+    imagePullPolicy: Always
+    name: simple-webapp
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 8080
+ ```
+ ## livenessProbe
+ - Update both the pods with a livenessProbe using the given spec
+
+Delete and recreate the PODs.
+
+CheckCompleteIncomplete
+Pod Name: simple-webapp-1
+
+Image Name: kodekloud/webapp-delayed-start
+
+Liveness Probe: httpGet
+
+Http Probe: /live
+
+Http Port: 8080
+
+Period Seconds: 1
+
+Initial Delay: 80
+
+Pod Name: simple-webapp-2
+
+Image Name: kodekloud/webapp-delayed-start
+
+Liveness Probe: httpGet
+
+Http Probe: /live
+
+Http Port: 8080
+
+Initial Delay: 80
+
+Period Seconds: 1
+```diff
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: simple-webapp
+  name: simple-webapp-1
+  namespace: default
+spec:
+  containers:
+  - env:
+    - name: APP_START_DELAY
+      value: "80"
+    image: kodekloud/webapp-delayed-start
+    imagePullPolicy: Always
+    name: simple-webapp
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 8080
+    livenessProbe:
+      httpGet:
+        path: /live
+        port: 8080
+      periodSeconds: 1
+      initialDelaySeconds: 80
+
+  -- ---------------------------------------------------------------
+  To recreate the pod, run the command:
+kubectl replace -f simple-webapp-1.yaml --force
+
+And do the same for simple-webapp-2, use the following YAML file:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: simple-webapp
+  name: simple-webapp-2
+  namespace: default
+spec:
+  containers:
+  - env:
+    - name: APP_START_DELAY
+      value: "80"
+    image: kodekloud/webapp-delayed-start
+    imagePullPolicy: Always
+    name: simple-webapp
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 8080
+    livenessProbe:
+      httpGet:
+        path: /live
+        port: 8080
+      periodSeconds: 1
+      initialDelaySeconds: 80
+To recreate the pod, run the command:
+kubectl replace -f simple-webapp-2.yaml --force
+
+
+
+ ```
