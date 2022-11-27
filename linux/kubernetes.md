@@ -1141,3 +1141,25 @@ kubectl replace -f simple-webapp-2.yaml --force
 
 
  ```
+ ## kubernetes metrics Server montring
+ ```diff 
++ how to get  loges
+-- kubectl logs -f  (pod name) (container name inside the pod)
+
+-- matrics server 
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+
+kubectl create -f .
+
+
+-- Identify the node that consumes the most CPU.
+
++ kubectl top node --sort-by='cpu' --no-headers | head -1                   
+node01         234m   2%    515Mi   2%    
+
+
+-- Identify the POD that consumes the most Memory.
+
++ kubectl top pod --sort-by='memory' --no-headers | head -1 
+
+ ```
