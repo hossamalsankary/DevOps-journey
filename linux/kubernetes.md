@@ -1315,7 +1315,7 @@ spec:
       restartPolicy: Never
 
 ```
-## > Cron Jobs
+##  Cron Jobs
 - Once the file is ready run the kubectl create command to create the cron-job and run the kubectl get cronjob command to see the newly created job. It would inturn create the required jobs and pods.
 apiVersion: batch/v1
 kind: CronJob
@@ -1414,3 +1414,94 @@ spec:
     - port: 53
       protocol: TCP
  ```
+ ## Ingress networking
+ #### - ingress controler
+ Let us now deploy the Ingress Controller. Create a deployment using the file given.
+
+The Deployment configuration is given at /root/ingress-controller.yaml. There are several issues with it. Try to fix them.
+
+```diff 
+  ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-controller
+  namespace: ingress-space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-ingress
+  template:
+    metadata:
+      labels:
+        name: nginx-ingress
+    spec:
+      serviceAccountName: ingress-serviceaccount
+      containers:
+        - name: nginx-ingress-controller
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.21.0
+          args:
+            - /nginx-ingress-controller
+            - --configmap=$(POD_NAMESPACE)/nginx-configuration
+            - --default-backend-service=app-space/default-http-backend
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 443
+
+```
+ 
+ ```diff
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  creationTimestamp: "2022-12-03T17:56:02Z"
+  generation: 1
+  name: ingress-wear-watch
+  namespace: app-space
+  resourceVersion: "724"
+  uid: dfde3f4d-14a6-4286-9074-1f5caa551bba
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: wear-service
+            port:
+              number: 8080
+        path: /wear
+        pathType: Prefix
+      - backend:
+          service:
+            name: video-service
+            port:
+              number: 8080
+        path: /watch
+        pathType: Prefix
+      - backend:
+          service: 
+            name: video-service
+            port:
+              number: 8080
+        path: /stream
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.108.174.123 
+  ```
