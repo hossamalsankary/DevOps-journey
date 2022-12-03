@@ -1460,8 +1460,30 @@ spec:
             - name: https
               containerPort: 443
 
+  ---
+  ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress
+  namespace: ingress-space
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    nodePort: 30080
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    name: nginx-ingress^C
+
 ```
- 
+ #### - create ingres
  ```diff
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -1504,4 +1526,35 @@ status:
   loadBalancer:
     ingress:
     - ip: 10.108.174.123 
+  ```
+
+  ```diff 
+  
+  ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-wear-watch
+  namespace: app-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /wear
+        pathType: Prefix
+        backend:
+          service:
+           name: wear-service
+           port: 
+            number: 8080
+      - path: /watch
+        pathType: Prefix
+        backend:
+          service:
+           name: video-service
+           port:
+            number: 8080
   ```
