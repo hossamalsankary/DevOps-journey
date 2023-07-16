@@ -188,5 +188,32 @@
  <img src="/images/last.png" alt="Permissions" width="50%" height="50%" />
 </p>
 
+ - #### Linux processes!! 
+##### 
+
+```diff
+# To track the running processes on your machine you can use the top command.
+- top | htop
+PID: Unique Process ID given to each process.
+User: Username of the process owner.
+PR: Priority given to a process while scheduling.
+NI: ‘nice’ value of a process.
+VIRT: Amount of virtual memory used by a process.
+RES: Amount of physical memory used by a process.
+SHR: Amount of memory shared with other processes.
+S: state of the process
+‘D’ = uninterruptible sleep
+‘R’ = running
+‘S’ = sleeping
+‘T’ = traced or stopped
+‘Z’ = zombie
+
+# s short for ‘Process Status’. It displays the currently-running processes. However, unlike the top command, the output generated is not in realtime.
+- ps
+ 
+# To get more information using ps command use:
+
+ ps -u hos 
 
 
+```
